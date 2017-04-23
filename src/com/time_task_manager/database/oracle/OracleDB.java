@@ -56,7 +56,7 @@ class OracleUserDBData implements UserDBAction {
         if (getDbConnection() != null) {
             if (psAddUser == null) {
                 try {
-                    psAddUser = getDbConnection().prepareStatement(OracleUsersSQLStatement.addUser);
+                    psAddUser = getDbConnection().prepareStatement(UsersSQLStatement.addUser);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -80,7 +80,7 @@ class OracleUserDBData implements UserDBAction {
         if (getDbConnection() != null) {
             if (psDeleteUser == null) {
                 try {
-                    psDeleteUser = getDbConnection().prepareStatement(OracleUsersSQLStatement.deleteUser);
+                    psDeleteUser = getDbConnection().prepareStatement(UsersSQLStatement.deleteUser);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -104,7 +104,7 @@ class OracleUserDBData implements UserDBAction {
         if (getDbConnection() != null) {
             if (psChangePassword == null) {
                 try {
-                    psChangePassword = getDbConnection().prepareStatement(OracleUsersSQLStatement.changePassword);
+                    psChangePassword = getDbConnection().prepareStatement(UsersSQLStatement.changePassword);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -129,7 +129,7 @@ class OracleUserDBData implements UserDBAction {
         if (getDbConnection() != null) {
             if (psGetUserData == null) {
                 try {
-                    psGetUserData = getDbConnection().prepareStatement(OracleUsersSQLStatement.getUserData);
+                    psGetUserData = getDbConnection().prepareStatement(UsersSQLStatement.getUserData);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -162,7 +162,7 @@ class OracleUserDBData implements UserDBAction {
         if (getDbConnection() != null) {
             if (psAllUsersData == null) {
                 try {
-                    psAllUsersData = getDbConnection().prepareStatement(OracleUsersSQLStatement.getAllUsersData);
+                    psAllUsersData = getDbConnection().prepareStatement(UsersSQLStatement.getAllUsersData);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

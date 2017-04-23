@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e54c3ec2-70d9-4cee-a28e-efd590968834" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/time_task_manager/model/TaskData.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/TasksDBData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/UsersDBAction.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/model/TaskNode.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/model/TaskNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/model/UserTaskDataModel.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/model/UserTaskDataModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/DatabaseAction.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/TasksDBAction.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/TaskDBAction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/UsersDBData.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUsersSQLStatement.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,11 +17,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="OracleUsersSQLStatement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUsersSQLStatement.java">
+      <file leaf-file-name="OracleSQLStatement.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="176">
+              <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -39,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+              <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,25 +42,11 @@
       <file leaf-file-name="OracleDB.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="251" column="0" lean-forward="true" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
+            <state relative-caret-position="154">
+              <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1739#1740#0" expanded="true" />
-                <element signature="e#1774#1775#0" expanded="true" />
-                <element signature="e#1834#1835#0" expanded="true" />
-                <element signature="e#1882#1883#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="48" column="37" lean-forward="true" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -76,8 +54,8 @@
       <file leaf-file-name="DBConnectionInfo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBConnectionInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="110">
+              <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -86,76 +64,10 @@
       <file leaf-file-name="DBAction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="189" column="0" lean-forward="true" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1492962820161" expanded="false" signature="296:307" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="321:327" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="425:436" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="452:458" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="505:516" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="541:547" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="584:595" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="615:621" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="675:686" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="719:725" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="1762:1773" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="1787:1793" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="1832:1843" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="1864:1870" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="1904:1915" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="1935:1941" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="1992:2003" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2036:2042" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2075:2086" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2105:2111" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2160:2171" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2202:2208" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2241:2252" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2271:2277" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2326:2337" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2368:2374" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2402:2413" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2427:2433" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2472:2483" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2504:2510" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2543:2554" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2570:2576" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2622:2633" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2658:2664" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2701:2712" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2734:2740" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2796:2807" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2844:2850" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2884:2895" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="2914:2920" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="2970:2981" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3012:3018" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3052:3063" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3083:3089" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3140:3151" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3184:3190" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3226:3237" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3258:3264" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3318:3329" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3364:3370" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3404:3415" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3434:3440" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3490:3501" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3532:3538" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3572:3583" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3603:3609" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3660:3671" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3704:3710" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3739:3750" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3765:3771" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3812:3823" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3846:3852" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3886:3897" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="3916:3922" ph=" }" />
-                <marker date="1492962820161" expanded="false" signature="3971:3982" ph=" { " />
-                <marker date="1492962820161" expanded="false" signature="4006:4012" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -192,7 +104,6 @@
         <option value="$PROJECT_DIR$/src/com/time_task_manager/database/UsersDBData.java" />
         <option value="$PROJECT_DIR$/src/com/time_task_manager/database/TasksDBData.java" />
         <option value="$PROJECT_DIR$/src/com/time_task_manager/database/TasksDBAction.java" />
-        <option value="$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java" />
         <option value="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUsersSQLStatement.java" />
         <option value="$PROJECT_DIR$/src/com/time_task_manager/lib/ojdbc6_g.jar!/oracle/jdbc/driver/PhysicalConnection.class" />
         <option value="$PROJECT_DIR$/src/com/time_task_manager/database/UserDBData.java" />
@@ -201,15 +112,17 @@
         <option value="$PROJECT_DIR$/src/com/time_task_manager/model/TaskData.java" />
         <option value="$PROJECT_DIR$/src/com/time_task_manager/model/TaskNode.java" />
         <option value="$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java" />
-        <option value="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java" />
         <option value="$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java" />
+        <option value="$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java" />
+        <option value="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java" />
+        <option value="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
-    <option name="width" value="1938" />
+    <option name="width" value="1932" />
     <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -230,9 +143,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -364,6 +274,10 @@
               <option name="myItemId" value="oracle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OracleSQLStatement.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -390,13 +304,12 @@
               <option name="myItemId" value="oracle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OracleDB.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="RunDashboard">
@@ -604,21 +517,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1932" height="1048" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32601535" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32601535" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24869384" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -629,6 +541,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -645,367 +558,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUsersSQLStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1739#1740#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
-            <element signature="e#1834#1835#0" expanded="true" />
-            <element signature="e#1882#1883#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1492962820161" expanded="false" signature="296:307" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="321:327" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="425:436" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="452:458" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="505:516" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="541:547" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="584:595" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="615:621" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="675:686" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="719:725" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1762:1773" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="1787:1793" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1832:1843" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="1864:1870" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1904:1915" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="1935:1941" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1992:2003" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2036:2042" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2075:2086" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2105:2111" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2160:2171" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2202:2208" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2241:2252" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2271:2277" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2326:2337" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2368:2374" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2402:2413" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2427:2433" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2472:2483" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2504:2510" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2543:2554" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2570:2576" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2622:2633" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2658:2664" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2701:2712" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2734:2740" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2796:2807" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2844:2850" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2884:2895" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2914:2920" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2970:2981" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3012:3018" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3052:3063" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3083:3089" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3140:3151" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3184:3190" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3226:3237" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3258:3264" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3318:3329" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3364:3370" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3404:3415" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3434:3440" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3490:3501" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3532:3538" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3572:3583" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3603:3609" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3660:3671" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3704:3710" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3739:3750" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3765:3771" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3812:3823" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3846:3852" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3886:3897" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3916:3922" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3971:3982" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="4006:4012" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUsersSQLStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1739#1740#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
-            <element signature="e#1834#1835#0" expanded="true" />
-            <element signature="e#1882#1883#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1492962820161" expanded="false" signature="296:307" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="321:327" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="425:436" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="452:458" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="505:516" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="541:547" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="584:595" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="615:621" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="675:686" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="719:725" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1762:1773" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="1787:1793" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1832:1843" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="1864:1870" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1904:1915" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="1935:1941" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1992:2003" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2036:2042" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2075:2086" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2105:2111" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2160:2171" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2202:2208" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2241:2252" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2271:2277" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2326:2337" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2368:2374" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2402:2413" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2427:2433" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2472:2483" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2504:2510" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2543:2554" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2570:2576" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2622:2633" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2658:2664" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2701:2712" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2734:2740" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2796:2807" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2844:2850" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2884:2895" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2914:2920" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2970:2981" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3012:3018" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3052:3063" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3083:3089" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3140:3151" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3184:3190" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3226:3237" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3258:3264" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3318:3329" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3364:3370" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3404:3415" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3434:3440" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3490:3501" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3532:3538" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3572:3583" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3603:3609" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3660:3671" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3704:3710" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3739:3750" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3765:3771" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3812:3823" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3846:3852" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3886:3897" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3916:3922" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3971:3982" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="4006:4012" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/TaskDBAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/com/time_task_manager/lib/ojdbc6_g.jar!/oracle/jdbc/driver/PhysicalConnection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="286" column="120" lean-forward="false" selection-start-line="286" selection-start-column="120" selection-end-line="286" selection-end-column="120" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/UserTaskDataModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/TaskNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/TaskData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="189" column="0" lean-forward="true" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1492962820161" expanded="false" signature="296:307" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="321:327" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="425:436" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="452:458" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="505:516" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="541:547" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="584:595" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="615:621" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="675:686" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="719:725" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1762:1773" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="1787:1793" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1832:1843" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="1864:1870" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1904:1915" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="1935:1941" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="1992:2003" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2036:2042" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2075:2086" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2105:2111" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2160:2171" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2202:2208" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2241:2252" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2271:2277" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2326:2337" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2368:2374" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2402:2413" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2427:2433" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2472:2483" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2504:2510" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2543:2554" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2570:2576" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2622:2633" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2658:2664" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2701:2712" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2734:2740" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2796:2807" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2844:2850" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2884:2895" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="2914:2920" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="2970:2981" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3012:3018" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3052:3063" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3083:3089" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3140:3151" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3184:3190" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3226:3237" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3258:3264" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3318:3329" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3364:3370" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3404:3415" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3434:3440" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3490:3501" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3532:3538" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3572:3583" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3603:3609" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3660:3671" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3704:3710" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3739:3750" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3765:3771" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3812:3823" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3846:3852" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3886:3897" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="3916:3922" ph=" }" />
-            <marker date="1492962820161" expanded="false" signature="3971:3982" ph=" { " />
-            <marker date="1492962820161" expanded="false" signature="4006:4012" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/sql/PreparedStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBConnectionInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUsersSQLStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -1025,22 +578,227 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="836">
           <caret line="48" column="37" lean-forward="true" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBConnectionInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2706">
+          <caret line="189" column="0" lean-forward="true" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5522">
+          <caret line="251" column="0" lean-forward="true" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="251" column="0" lean-forward="true" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
+        <state relative-caret-position="594">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1739#1740#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
-            <element signature="e#1834#1835#0" expanded="true" />
-            <element signature="e#1882#1883#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/TaskDBAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/com/time_task_manager/lib/ojdbc6_g.jar!/oracle/jdbc/driver/PhysicalConnection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="286" column="120" lean-forward="false" selection-start-line="286" selection-start-column="120" selection-end-line="286" selection-end-column="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/UserTaskDataModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/TaskNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/TaskData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="45" column="13" lean-forward="true" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/DBConnectionInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26555">
+          <caret line="94" column="8" lean-forward="false" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

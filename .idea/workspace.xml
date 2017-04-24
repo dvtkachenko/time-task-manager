@@ -1,49 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e54c3ec2-70d9-4cee-a28e-efd590968834" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/oracle/DBErrorMessage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/oracle/OracleDBCI.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/oracle/OracleUsersSQLStatement.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/resources/Oracle/ADD_USER.fnc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/resources/Oracle/CHECK_USER.fnc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/resources/Oracle/CHECK_USER.~fnc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/resources/Oracle/DELETE_USER.fnc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/resources/Oracle/UPDATE_USER.fnc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/resources/Oracle/select_tree.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/resources/Oracle/tasks.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/resources/Oracle/tasks_details.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/resources/Oracle/users.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDBAction.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/DBAction.class" afterPath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/DBAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/DBConnectionInfo.class" afterPath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/DBConnectionInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/TaskDBAction.class" afterPath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/TaskDBAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/UserDBAction.class" afterPath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/UserDBAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/oracle/OracleDB.class" afterPath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/oracle/OracleDB.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/oracle/OracleUserDBData.class" afterPath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/database/oracle/OracleUserDBData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/model/TaskData.class" afterPath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/model/TaskData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/model/UserData.class" afterPath="$PROJECT_DIR$/out/production/TimeTaskManager/com/time_task_manager/model/UserData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/DBAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/DBConnectionInfo.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/DBConnectionInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/TaskDBAction.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/TaskDBAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDBConnectionInfo.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDBConnectionInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUserDBData.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUserDBData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/model/TaskData.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/model/TaskData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/model/UserData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDBMessage.java" afterPath="$PROJECT_DIR$/src/com/time_task_manager/database/DBMessage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/ADD_USER.fnc" afterPath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/rubbish/ADD_USER.fnc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/CHECK_USER.fnc" afterPath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/rubbish/CHECK_USER.fnc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/CHECK_USER.~fnc" afterPath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/rubbish/CHECK_USER.~fnc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/DELETE_USER.fnc" afterPath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/rubbish/DELETE_USER.fnc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/UPDATE_USER.fnc" afterPath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/rubbish/UPDATE_USER.fnc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/select_tree.sql" afterPath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/rubbish/select_tree.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/tasks.sql" afterPath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/rubbish/tasks.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/tasks_details.sql" afterPath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/rubbish/tasks_details.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/users.sql" afterPath="$PROJECT_DIR$/src/com/time_task_manager/resources/Oracle/rubbish/users.sql" />
-    </list>
+    <list default="true" id="e54c3ec2-70d9-4cee-a28e-efd590968834" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,8 +16,8 @@
       <file leaf-file-name="OracleUserDBData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUserDBData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="117" column="18" lean-forward="true" selection-start-line="117" selection-start-column="18" selection-end-line="117" selection-end-column="18" />
+            <state relative-caret-position="2486">
+              <caret line="117" column="18" lean-forward="false" selection-start-line="117" selection-start-column="18" selection-end-line="117" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,8 +28,8 @@
       <file leaf-file-name="OracleDB.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+            <state relative-caret-position="1034">
+              <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,8 +40,8 @@
       <file leaf-file-name="OracleTaskDBData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleTaskDBData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="191" column="42" lean-forward="true" selection-start-line="191" selection-start-column="42" selection-end-line="191" selection-end-column="42" />
+            <state relative-caret-position="4114">
+              <caret line="191" column="42" lean-forward="false" selection-start-line="191" selection-start-column="42" selection-end-line="191" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,8 +52,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1045">
-              <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state relative-caret-position="396">
+              <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/TaskDBAction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,7 +76,7 @@
       <file leaf-file-name="OracleSQLStatement.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
+            <state relative-caret-position="704">
               <caret line="32" column="73" lean-forward="false" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
               <folding />
             </state>
@@ -208,6 +166,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -346,9 +305,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="RecentsManager">
@@ -588,7 +546,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -597,17 +554,18 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24869384" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39846322" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -624,6 +582,64 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUserDBData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2486">
+          <caret line="117" column="18" lean-forward="true" selection-start-line="117" selection-start-column="18" selection-end-line="117" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1034">
+          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleTaskDBData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4114">
+          <caret line="191" column="42" lean-forward="true" selection-start-line="191" selection-start-column="42" selection-end-line="191" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/TaskDBAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="32" column="73" lean-forward="false" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1804">
+          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/UserDBAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -677,9 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -708,10 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="836">
           <caret line="48" column="37" lean-forward="true" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
-          <folding>
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -727,9 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2706">
           <caret line="189" column="0" lean-forward="true" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -758,10 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -769,9 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -800,10 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -811,9 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -869,9 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="46" lean-forward="true" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -896,7 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,7 +892,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -922,10 +909,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-165">
           <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding>
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#272#273#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -947,7 +930,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/TaskDBAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -956,8 +939,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleUserDBData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="117" column="18" lean-forward="true" selection-start-line="117" selection-start-column="18" selection-end-line="117" selection-end-column="18" />
+        <state relative-caret-position="2486">
+          <caret line="117" column="18" lean-forward="false" selection-start-line="117" selection-start-column="18" selection-end-line="117" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -966,8 +949,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+        <state relative-caret-position="1034">
+          <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -984,7 +967,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleSQLStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
+        <state relative-caret-position="704">
           <caret line="32" column="73" lean-forward="false" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
           <folding />
         </state>
@@ -992,8 +975,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/database/oracle/OracleTaskDBData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="191" column="42" lean-forward="true" selection-start-line="191" selection-start-column="42" selection-end-line="191" selection-end-column="42" />
+        <state relative-caret-position="4114">
+          <caret line="191" column="42" lean-forward="false" selection-start-line="191" selection-start-column="42" selection-end-line="191" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1002,8 +985,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/time_task_manager/model/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1045">
-          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state relative-caret-position="396">
+          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,6 +1,6 @@
 package com.time_task_manager.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by diman on 21.04.2017.
@@ -11,17 +11,26 @@ public class TaskData {
 	private int taskID;
 	private int parentTaskID;
 	private int childTaskID;
-	private int levelTaskID;
+	private int taskLevel;
 	private int userID;
 	private String taskName;
-	private Date plantStartTime;
+	private Date planStartTime;
 	private Date planEndTime;
 	private int planDuration;
 	private Date factStartTime;
 	private Date factEndTime;
 	private int factDuration;
-	private int version;
-	private boolean isCompleted;
+	private int numVersion;
+	private String isCompleted;
+
+	public TaskData() {
+		super();
+	}
+
+	public TaskData(int taskID, int userID) {
+		this.taskID = taskID;
+		this.userID = userID;
+	}
 
 	public int getTaskID() {
 		return taskID;
@@ -47,12 +56,12 @@ public class TaskData {
 		this.childTaskID = childTaskID;
 	}
 
-	public int getLevelTaskID() {
-		return levelTaskID;
+	public int getTaskLevel() {
+		return taskLevel;
 	}
 
-	public void setLevelTaskID(int levelTaskID) {
-		this.levelTaskID = levelTaskID;
+	public void setTaskLevel(int taskLevel) {
+		this.taskLevel = taskLevel;
 	}
 
 	public int getUserID() {
@@ -71,12 +80,12 @@ public class TaskData {
 		this.taskName = taskName;
 	}
 
-	public Date getPlantStartTime() {
-		return plantStartTime;
+	public Date getPlanStartTime() {
+		return planStartTime;
 	}
 
-	public void setPlantStartTime(Date plantStartTime) {
-		this.plantStartTime = plantStartTime;
+	public void setPlanStartTime(Date planStartTime) {
+		this.planStartTime = planStartTime;
 	}
 
 	public Date getPlanEndTime() {
@@ -119,19 +128,39 @@ public class TaskData {
 		this.factDuration = factDuration;
 	}
 
-	public int getVersion() {
-		return version;
+	public int getNumVersion() {
+		return numVersion;
 	}
 
-	public void setVersion(int version) {
-		this.version = version;
+	public void setNumVersion(int numVersion) {
+		this.numVersion = numVersion;
 	}
 
-	public boolean isCompleted() {
+	public String isCompleted() {
 		return isCompleted;
 	}
 
-	public void setCompleted(boolean completed) {
-		isCompleted = completed;
+	public void setIsCompleted(String isCompleted) {
+		this.isCompleted = isCompleted;
+	}
+
+	@Override
+	public String toString() {
+		return "TaskData{" +
+				"taskID=" + taskID +
+				", parentTaskID=" + parentTaskID +
+				", childTaskID=" + childTaskID +
+				", taskLevel=" + taskLevel +
+				", userID=" + userID +
+				", taskName='" + taskName + '\'' +
+				", planStartTime=" + planStartTime +
+				", planEndTime=" + planEndTime +
+				", planDuration=" + planDuration +
+				", factStartTime=" + factStartTime +
+				", factEndTime=" + factEndTime +
+				", factDuration=" + factDuration +
+				", numVersion=" + numVersion +
+				", isCompleted='" + isCompleted + '\'' +
+				'}' + '\n';
 	}
 }

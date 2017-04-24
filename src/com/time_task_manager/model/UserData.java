@@ -8,11 +8,21 @@ import java.sql.Connection;
 
 public class UserData {
 
-    private int userID;
+    private int userID = 0;
     private String userName;
     private String userPassword;
 
     public UserData() {
+        super();
+    }
+
+    public UserData(String userName) {
+        this.userName = userName;
+    }
+
+    public UserData(String userName, String userPassword) {
+        this.userName = userName;
+        this.userPassword = userPassword;
     }
 
     public UserData(int userID, String userName, String userPassword) {

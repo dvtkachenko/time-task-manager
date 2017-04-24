@@ -1,5 +1,6 @@
 package com.time_task_manager.database.oracle;
 
+import com.time_task_manager.database.DBMessage;
 import com.time_task_manager.database.UserDBAction;
 import com.time_task_manager.model.UserData;
 
@@ -13,14 +14,6 @@ import java.util.List;
 /**
  * Created by diman on 23.04.2017.
  */
-class OracleUserSQLStatement {
-    public static String addUser = "insert into users values (seq_users.nextval, ?, ?)";
-    public static String deleteUser = "delete from users u where u.user_name = ?";
-    public static String changePassword = "update users u set u.user_password = ? where u.user_name = ?";
-    public static String getUserData = "select u.user_id, u.user_name, u.user_password from users u where u.user_name = ?";
-    public static String getAllUsersData = "select u.user_id, u.user_name, u.user_password from users u";
-    public static String getMaxUserID = "select max(user_id) from users";
-}
 
 public class OracleUserDBData implements UserDBAction {
 
@@ -40,146 +33,92 @@ public class OracleUserDBData implements UserDBAction {
         this.dbConnection = dbConnection;
     }
 
-    public boolean addUser(String userName, String userPassword) {
+    // ! for correct work field "user_name" in database needs constraint !
+    public boolean addUser(UserData userData) throws SQLException {
         boolean result = false;
-        if (getDbConnection() != null) {
-            if (psAddUser == null) {
-                try {
-                    psAddUser = getDbConnection().prepareStatement(OracleUserSQLStatement.addUser);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            try {
-                psAddUser.setString(1, userName);
-                psAddUser.setString(2, userPassword);
-                if (psAddUser.executeUpdate() > 0) result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println(OracleDBMessage.NO_DB_CONNECTION);
+        if (getDbConnection() == null) throw new SQLException(DBMessage.NO_DB_CONNECTION);
+        if (psAddUser == null) {
+            psAddUser = getDbConnection().prepareStatement(OracleSQLStatement.Users.addUser);
         }
+        psAddUser.setString(1, userData.getUserName());
+        psAddUser.setString(2, userData.getUserPassword());
+
+        if (psAddUser.executeUpdate() > 0) result = true;
 
         return result;
     }
 
-    public boolean deleteUser(String userName) {
+    public boolean deleteUser(UserData userData) throws SQLException {
         boolean result = false;
-        if (getDbConnection() != null) {
-            if (psDeleteUser == null) {
-                try {
-                    psDeleteUser = getDbConnection().prepareStatement(OracleUserSQLStatement.deleteUser);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            try {
-                psDeleteUser.setString(1, userName);
-                if (psDeleteUser.executeUpdate() > 0) result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            System.out.println(OracleDBMessage.NO_DB_CONNECTION);
+        if (getDbConnection() == null) throw new SQLException(DBMessage.NO_DB_CONNECTION);
+        if (psDeleteUser == null) {
+            psDeleteUser = getDbConnection().prepareStatement(OracleSQLStatement.Users.deleteUser);
         }
+        psDeleteUser.setString(1, userData.getUserName());
+        if (psDeleteUser.executeUpdate() > 0) result = true;
 
         return result;
     }
 
-    public boolean changePassword(String userName, String userPassword) {
+    public boolean changePassword(UserData userData) throws SQLException {
         boolean result = false;
-        if (getDbConnection() != null) {
-            if (psChangePassword == null) {
-                try {
-                    psChangePassword = getDbConnection().prepareStatement(OracleUserSQLStatement.changePassword);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            try {
-                psChangePassword.setString(1, userPassword);
-                psChangePassword.setString(2, userName);
-                if (psChangePassword.executeUpdate() > 0) result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            System.out.println(OracleDBMessage.NO_DB_CONNECTION);
+        if (getDbConnection() == null) throw new SQLException(DBMessage.NO_DB_CONNECTION);
+        if (psChangePassword == null) {
+            psChangePassword = getDbConnection().prepareStatement(OracleSQLStatement.Users.changePassword);
         }
+        psChangePassword.setString(1, userData.getUserPassword());
+        psChangePassword.setString(2, userData.getUserName());
+        if (psChangePassword.executeUpdate() > 0) result = true;
 
         return result;
     }
 
-    public UserData getUserData(String userName) {
-        UserData userData = null;
-        if (getDbConnection() != null) {
-            if (psGetUserData == null) {
-                try {
-                    psGetUserData = getDbConnection().prepareStatement(OracleUserSQLStatement.getUserData);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            try {
-                psGetUserData.setString(1, userName);
-                ResultSet rs = psGetUserData.executeQuery();
-                // there is no checking situation when result has more then 1 row
-                if (rs.next()) {
-                    userData = new UserData();
-                    userData.setUserID(rs.getInt(1));
-                    userData.setUserName(rs.getString(2));
-                    userData.setUserPassword(rs.getString(3));
-                } else {
-                    System.out.println(OracleDBMessage.NO_RESULT);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            System.out.println(OracleDBMessage.NO_DB_CONNECTION);
+    public UserData getUserData(UserData userData) throws SQLException {
+        UserData userNewData = null;
+        if (getDbConnection() == null) throw new SQLException(DBMessage.NO_DB_CONNECTION);
+        if (psGetUserData == null) {
+            psGetUserData = getDbConnection().prepareStatement(OracleSQLStatement.Users.getUserData);
         }
+        psGetUserData.setString(1, userData.getUserName());
+        ResultSet rs = psGetUserData.executeQuery();
+        // there is no checking situation when result has more then 1 row
+        // ! for correct work field "user_name" in database needs constraint !
+        if (rs.next()) {
+            userNewData = new UserData();
+            userNewData.setUserID(rs.getInt("user_id"));
+            userNewData.setUserName(rs.getString("user_name"));
+            userNewData.setUserPassword(rs.getString("user_password"));
+        }
+        //        } else {
+//            System.out.println(DBMessage.NO_RESULT);
+//        }
 
-        return userData;
+        return userNewData;
     }
 
-    public List<UserData> getAllUsersData() {
+    public List<UserData> getAllUsersData() throws SQLException {
         List<UserData> listUsers = null;
-        if (getDbConnection() != null) {
-            if (psAllUsersData == null) {
-                try {
-                    psAllUsersData = getDbConnection().prepareStatement(OracleUserSQLStatement.getAllUsersData);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            try {
-                ResultSet rs = psAllUsersData.executeQuery();
+        if (getDbConnection() == null) throw new SQLException(DBMessage.NO_DB_CONNECTION);
+        if (psAllUsersData == null) {
+            psAllUsersData = getDbConnection().prepareStatement(OracleSQLStatement.Users.getAllUsersData);
+        }
+        ResultSet rs = psAllUsersData.executeQuery();
 
-                if (rs.next()) {
-                    listUsers = new ArrayList<>();
-                    do {
-                        UserData userData = new UserData();
-                        userData.setUserID(rs.getInt(1));
-                        userData.setUserName(rs.getString(2));
-                        userData.setUserPassword(rs.getString(3));
-                        listUsers.add(userData);
-                    } while (rs.next());
-                } else {
-                    System.out.println(OracleDBMessage.NO_RESULT);
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            System.out.println(OracleDBMessage.NO_DB_CONNECTION);
+        if (rs.next()) {
+            listUsers = new ArrayList<>();
+            do {
+                UserData userData = new UserData();
+                userData.setUserID(rs.getInt("user_id"));
+                userData.setUserName(rs.getString("user_name"));
+                userData.setUserPassword(rs.getString("user_password"));
+                listUsers.add(userData);
+            } while (rs.next());
         }
 
+//        } else {
+//            System.out.println(DBMessage.NO_RESULT);
+//        }
+//
         return listUsers;
     }
 

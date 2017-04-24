@@ -10,6 +10,6 @@ import java.util.List;
 
 
 public interface DBAction {
-    boolean openDBConnection(DBConnectionInfo dbci);
-    void closeDBConnection();
+    boolean openDBConnection(DBConnectionInfo dbci) throws Exception;
+    void closeDBConnection() throws Exception;
 }

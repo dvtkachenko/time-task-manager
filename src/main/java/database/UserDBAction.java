@@ -2,6 +2,7 @@ package database;
 
 import entity.UserData;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import java.util.List;
  * Created by diman on 19.04.2017.
  */
 public interface UserDBAction {
+    Connection getDbConnection();
+    void setDbConnection(Connection dbConnection);
     boolean addUser(UserData userData)  throws SQLException;
     boolean deleteUser(UserData userData) throws SQLException ;
     boolean changePassword(UserData userData) throws SQLException ;

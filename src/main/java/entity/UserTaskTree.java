@@ -8,7 +8,7 @@ import java.util.List;
 
 // it is a layer for work with data of TIMETASKMANAGER
 
-public class UserTaskDataTree {
+public class UserTaskTree {
 
     UserData userData;
 

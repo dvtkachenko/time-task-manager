@@ -28,18 +28,18 @@ public class Main {
 //        if (DBManager.users.addUser(new UserData("oksana","12345"))) System.out.println("user was added");
 //        if (DBManager.users.addUser(new UserData("tolik","12345"))) System.out.println("user was added");
 //
-        if (DBManager.users.deleteUser(new UserData("andrey3"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("andrey4"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("anton"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("gleb"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("oksana"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("tolik"))) System.out.println("user was deleted");
-
-        if (DBManager.users.changePassword(new UserData("andrey3","qwef"))) System.out.println("password was changed");
-        if (DBManager.users.changePassword(new UserData("anton","asgasdvz"))) System.out.println("password was changed");
-        if (DBManager.users.changePassword(new UserData("gleb","qq23rwasf"))) System.out.println("password was changed");
-        if (DBManager.users.changePassword(new UserData("oksana","1wvg4g"))) System.out.println("password was changed");
-        if (DBManager.users.changePassword(new UserData("tolik","54321"))) System.out.println("password was changed");
+//        if (DBManager.users.deleteUser(new UserData("andrey3"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("andrey4"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("anton"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("gleb"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("oksana"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("tolik"))) System.out.println("user was deleted");
+//
+//        if (DBManager.users.changePassword(new UserData("andrey3","qwef"))) System.out.println("password was changed");
+//        if (DBManager.users.changePassword(new UserData("anton","asgasdvz"))) System.out.println("password was changed");
+//        if (DBManager.users.changePassword(new UserData("gleb","qq23rwasf"))) System.out.println("password was changed");
+//        if (DBManager.users.changePassword(new UserData("oksana","1wvg4g"))) System.out.println("password was changed");
+//        if (DBManager.users.changePassword(new UserData("tolik","54321"))) System.out.println("password was changed");
 
             System.out.println(DBManager.users.getUserData(new UserData("andrey3")));
             System.out.println(DBManager.users.getUserData(new UserData("anton")));
@@ -74,7 +74,7 @@ public class Main {
 
             System.out.println(DBManager.tasks.getUserAllTasks(4));
             System.out.println();
-            // make a UserTaskDataTree as a tree
+            // make a UserTaskTree as a tree
             System.out.println(DBManager.tasks.getUserAllTasksAsTree(4, 1));
 
 
@@ -82,6 +82,7 @@ public class Main {
             e.printStackTrace();
         } finally {
             if(!DBManager.closeDBSession()) System.out.println("I can't close the database session");;
+            System.out.println("Check session. Session is " + DBManager.isSessionCreated());
         }
     }
 

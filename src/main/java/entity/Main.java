@@ -22,19 +22,19 @@ public class Main {
             System.out.println("Check session. Session is " + DBManager.isSessionCreated());
 
 
-        if (DBManager.users.addUser(new UserData("andrey15","12345"))) System.out.println("user was added");
-        if (DBManager.users.addUser(new UserData("andrey9","12345"))) System.out.println("user was added");
-        if (DBManager.users.addUser(new UserData("anton6","12345"))) System.out.println("user was added");
-        if (DBManager.users.addUser(new UserData("gleb","12345"))) System.out.println("user was added");
-        if (DBManager.users.addUser(new UserData("oksana","12345"))) System.out.println("user was added");
-        if (DBManager.users.addUser(new UserData("tolik","12345"))) System.out.println("user was added");
-
-        if (DBManager.users.deleteUser(new UserData("andrey3"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("andrey4"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("anton"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("gleb"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("oksana"))) System.out.println("user was deleted");
-        if (DBManager.users.deleteUser(new UserData("tolik"))) System.out.println("user was deleted");
+//        if (DBManager.users.addUser(new UserData("andrey15","12345"))) System.out.println("user was added");
+//        if (DBManager.users.addUser(new UserData("andrey9","12345"))) System.out.println("user was added");
+//        if (DBManager.users.addUser(new UserData("anton6","12345"))) System.out.println("user was added");
+//        if (DBManager.users.addUser(new UserData("gleb","12345"))) System.out.println("user was added");
+//        if (DBManager.users.addUser(new UserData("oksana","12345"))) System.out.println("user was added");
+//        if (DBManager.users.addUser(new UserData("tolik","12345"))) System.out.println("user was added");
+//
+//        if (DBManager.users.deleteUser(new UserData("andrey3"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("andrey4"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("anton"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("gleb"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("oksana"))) System.out.println("user was deleted");
+//        if (DBManager.users.deleteUser(new UserData("tolik"))) System.out.println("user was deleted");
 //
 //        if (DBManager.users.changePassword(new UserData("andrey3","qwef"))) System.out.println("password was changed");
 //        if (DBManager.users.changePassword(new UserData("anton","asgasdvz"))) System.out.println("password was changed");

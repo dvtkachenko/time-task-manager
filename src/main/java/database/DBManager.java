@@ -1,5 +1,6 @@
 package database;
 
+import database.mysql.MySQLDBConnectionInfo;
 import database.oracle.OracleDBConnectionInfo;
 import database.oracle.OracleTaskDBData;
 import database.oracle.OracleUserDBData;
@@ -49,6 +50,14 @@ public class DBManager {
                     dbci.getDbPassword());
         }
 
+        if (dbci instanceof MySQLDBConnectionInfo) {
+            Class.forName(dbci.getDbDriver());
+
+            conn = DriverManager.getConnection(dbci.getDbConnection(),
+                    dbci.getDbUser(),
+                    dbci.getDbPassword());
+        }
+
         if (dbci instanceof PostgresqlDBConnectionInfo) {
             Class.forName(dbci.getDbDriver());
 
@@ -73,7 +82,8 @@ public class DBManager {
             Locale.setDefault(Locale.ENGLISH);
 
 //            dbUserTaskConnection = openDBConnection(new OracleDBConnectionInfo());
-            dbUserTaskConnection = openDBConnection(new PostgresqlDBConnectionInfo());
+//            dbUserTaskConnection = openDBConnection(new PostgresqlDBConnectionInfo());
+            dbUserTaskConnection = openDBConnection(new MySQLDBConnectionInfo());
 
             // ??? i need to find out about this line code ???
             Locale.setDefault(defaultLocale);
@@ -81,10 +91,10 @@ public class DBManager {
 //            users = new OracleUserDBData();
 //            tasks = new OracleTaskDBData();
 
-            users = new PostgresqlUserDBData();
+//            users = new PostgresqlUserDBData();
 //            tasks = new PostgresqlTaskDBData();
 
-            users.setDbConnection(dbUserTaskConnection);
+//            users.setDbConnection(dbUserTaskConnection);
 //            tasks.setDbConnection(dbUserTaskConnection);
 
             sessionCreated = true;

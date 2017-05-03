@@ -7,9 +7,14 @@ import java.util.List;
  */
 public class TaskNode {
 
-    private TaskNode parentTaskNode;
+    public TaskNode parentTaskNode = null;
 
-    TaskData taskData;
+    TaskData taskData = null;
 
-    List<TaskNode> childTaskNodes;
+    List<TaskNode> childTaskNodes = null;
+
+    TaskNode(TaskNode parentTaskNode, TaskData taskData) {
+        this.parentTaskNode = parentTaskNode;
+        this.taskData = taskData;
+    }
 }

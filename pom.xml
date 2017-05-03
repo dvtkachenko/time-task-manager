@@ -26,6 +26,12 @@
             <artifactId>ojdbc7</artifactId>
             <version>12.1.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4-1200-jdbc41</version>
+        </dependency>
 
     </dependencies>
     

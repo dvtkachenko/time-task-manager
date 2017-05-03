@@ -32,6 +32,12 @@ public class TaskData {
 		this.userID = userID;
 	}
 
+	public TaskData(int taskID, int parentTaskID, int userID) {
+		this.taskID = taskID;
+		this.parentTaskID = parentTaskID;
+		this.userID = userID;
+	}
+
 	public int getTaskID() {
 		return taskID;
 	}
@@ -161,6 +167,6 @@ public class TaskData {
 				", factDuration=" + factDuration +
 				", numVersion=" + numVersion +
 				", isCompleted='" + isCompleted + '\'' +
-				'}' + '\n';
+				'}';
 	}
 }

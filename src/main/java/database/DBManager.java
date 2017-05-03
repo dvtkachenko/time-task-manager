@@ -3,11 +3,15 @@ package database;
 import database.oracle.OracleDBConnectionInfo;
 import database.oracle.OracleTaskDBData;
 import database.oracle.OracleUserDBData;
+import database.postgresql.PostgresqlDBConnectionInfo;
+import database.postgresql.PostgresqlTaskDBData;
+import database.postgresql.PostgresqlUserDBData;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Locale;
+import java.util.Properties;
 
 /**
  * Created by diman on 26.04.2017.
@@ -34,12 +38,29 @@ public class DBManager {
 
     private static Connection openDBConnection(DBConnectionInfo dbci) throws Exception {
 
-        Class.forName(dbci.getDbDriver());
+        Connection conn = null;
 
-        return DriverManager.getConnection(dbci.getDbConnection(),
-                dbci.getDbUser(),
-                dbci.getDbPassword());
+        // this part of code is krivojopo ... but a will fix it later
+        if (dbci instanceof OracleDBConnectionInfo) {
+            Class.forName(dbci.getDbDriver());
 
+            conn = DriverManager.getConnection(dbci.getDbConnection(),
+                    dbci.getDbUser(),
+                    dbci.getDbPassword());
+        }
+
+        if (dbci instanceof PostgresqlDBConnectionInfo) {
+            Class.forName(dbci.getDbDriver());
+
+            Properties props = new Properties();
+            props.setProperty("user",dbci.getDbUser());
+            props.setProperty("password",dbci.getDbPassword());
+            props.setProperty("ssl","true");
+
+            conn = DriverManager.getConnection(dbci.getDbConnection(),props);
+        }
+
+        return conn;
     }
 
     public static boolean createDBSession() {
@@ -51,16 +72,20 @@ public class DBManager {
             // for correct connection to Oracle database
             Locale.setDefault(Locale.ENGLISH);
 
-            dbUserTaskConnection = openDBConnection(new OracleDBConnectionInfo());
+//            dbUserTaskConnection = openDBConnection(new OracleDBConnectionInfo());
+            dbUserTaskConnection = openDBConnection(new PostgresqlDBConnectionInfo());
 
             // ??? i need to find out about this line code ???
             Locale.setDefault(defaultLocale);
 
-            users = new OracleUserDBData();
-            tasks = new OracleTaskDBData();
+//            users = new OracleUserDBData();
+//            tasks = new OracleTaskDBData();
+
+            users = new PostgresqlUserDBData();
+//            tasks = new PostgresqlTaskDBData();
 
             users.setDbConnection(dbUserTaskConnection);
-            tasks.setDbConnection(dbUserTaskConnection);
+//            tasks.setDbConnection(dbUserTaskConnection);
 
             sessionCreated = true;
 

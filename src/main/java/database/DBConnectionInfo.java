@@ -5,6 +5,7 @@ package database;
  */
 public abstract class DBConnectionInfo {
 
+
     public abstract String getDbDriver();
 
     public abstract String getDbConnection();

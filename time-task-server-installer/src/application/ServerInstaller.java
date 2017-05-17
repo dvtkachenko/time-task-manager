@@ -34,7 +34,9 @@ public class ServerInstaller extends Application {
 
         URL resource = getClass().getResource(PATH_TO_SETUP_WIZARD_FXML);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_TO_SETUP_WIZARD_FXML));
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_TO_SETUP_WIZARD_FXML));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ServerInstaller.class.getResource("view/ServerInstaller.fxml"));
 
         try{
             AnchorPane pane = (AnchorPane)loader.load();

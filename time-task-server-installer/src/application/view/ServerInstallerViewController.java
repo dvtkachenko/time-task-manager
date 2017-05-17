@@ -70,7 +70,7 @@ public class ServerInstallerViewController {
     @FXML
     private Label labelDBUsername;
 
-    private ServerInstaller setupWizzard;
+    private ServerInstaller serverInstaller;
 
     private Stage mainStage;
 
@@ -121,7 +121,7 @@ public class ServerInstallerViewController {
     }
 
     public void setSetupWizard(ServerInstaller ServerInstaller) {
-        this.setupWizzard = ServerInstaller;
+        this.serverInstaller = ServerInstaller;
 
     }
 
@@ -194,7 +194,7 @@ public class ServerInstallerViewController {
     @FXML
     private void handleCancelBackButton() {
         try {
-            setupWizzard.stop();
+            serverInstaller.stop();
         } catch (Exception e) {
 
         }

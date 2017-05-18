@@ -1,7 +1,6 @@
 package application.model;
 
 import java.io.FileInputStream;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,9 +8,10 @@ import java.util.Scanner;
 /**
  * Created by diman on 17.05.2017.
  */
-public class DBCreationScript {
+public class DBCreationScript implements DBCreationScriptInterface {
 
-    private final String PATH_TO_SCRIPT = "";
+//    private final String PATH_TO_SCRIPT = "d:\\MyDevelopment\\JavaCourse\\TTMServerInstaller\\out\\production\\TTMServerInstaller\\application\\resources\\";
+    private final String PATH_TO_SCRIPT = "out\\production\\TTMServerInstaller\\application\\resources\\";
 
     private List<String> user = null;
     private List<String> database = null;
@@ -50,7 +50,11 @@ public class DBCreationScript {
         return script;
     }
 
-    public void initScript(String scriptSuffixFileName) {
+    DBCreationScript(String scriptSuffixFileName) {
+        initScript(scriptSuffixFileName);
+    }
+
+    private void initScript(String scriptSuffixFileName) {
 
         try (FileInputStream fileUserScript = new FileInputStream(PATH_TO_SCRIPT + "userScript" + scriptSuffixFileName)) {
 
@@ -84,6 +88,7 @@ public class DBCreationScript {
 
     private void readFileScript(List<String> script, FileInputStream fileScript) {
         Scanner s = new Scanner(fileScript);
+//        s.useDelimiter("(;(\r)?\n)|((\r)?\n)?(--)?.*(--(\r)?\n)");
         s.useDelimiter("(;(\r)?\n)|(--\n)");
         while (s.hasNext())
         {
@@ -94,10 +99,12 @@ public class DBCreationScript {
                 line = line.substring(i + 1, line.length() - " */".length());
             }
 
-            if (line.trim().length() > 0)
+            if (!line.startsWith("--") && !line.startsWith("\n--") && line.trim().length() > 0)
             {
                 script.add(line);
             }
         }
+        s.close();
     }
+
 }

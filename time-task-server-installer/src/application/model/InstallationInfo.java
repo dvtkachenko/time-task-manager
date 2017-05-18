@@ -1,5 +1,6 @@
 package application.model;
 
+import java.net.InetAddress;
 import java.net.URL;
 
 /**
@@ -11,7 +12,7 @@ public class InstallationInfo {
 
     private String pathToInstallation;
 
-    private DBInfo connectionInfo = null;
+    private DBInfo dbInfo = null;
 
     private boolean createUserAuto = false;
 
@@ -23,7 +24,7 @@ public class InstallationInfo {
 
     private String ttmUserPassword = null;
 
-    private URL serverIP = null;
+    private String serverAddress = null;
 
     private String serverPort = null;
 

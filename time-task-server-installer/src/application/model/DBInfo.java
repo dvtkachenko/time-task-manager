@@ -13,11 +13,13 @@ public abstract class DBInfo {
 
     public abstract String getDbConnectionPrefix();
 
-    public DBCreationScript getDBCreationScript(String scriptSuffixFileName) {
+    public abstract String getScriptSuffixFileName();
+
+    public DBCreationScriptInterface getDBCreationScript() {
 
         if (creationScript == null) {
-            creationScript = new DBCreationScript();
-            creationScript.initScript(scriptSuffixFileName);
+            creationScript = new DBCreationScript(getScriptSuffixFileName());
+//            creationScript.initScript(getScriptSuffixFileName());
         }
 
         return creationScript;

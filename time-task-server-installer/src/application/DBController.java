@@ -1,14 +1,15 @@
 package application;
 
-import application.model.DBInfo;
-import application.model.MySQLDBInfo;
-import application.model.OracleDBInfo;
-import application.model.PostgresqlDBInfo;
 
+import application.model.DBCreationScript;
+import application.model.DBCreationScriptInterface;
+import application.model.PostgresqlDBInfo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -21,83 +22,80 @@ import java.util.Locale;
 
 public class DBController {
 
-    private static boolean sessionCreated = false;
-    private static Connection dbConnection = null;
-    private static final Locale defaultLocale = Locale.getDefault();
-
     private DBController(){};
 
-    public static boolean isSessionCreated() {
-        return sessionCreated;
+    private Connection openConnection(DBConnectionInfo connectionInfo) throws Exception {
+        Class.forName(connectionInfo.getDbDriver());
+        return DriverManager.getConnection(connectionInfo.getServerURL(), connectionInfo.getUserName(),connectionInfo.getUserPassword());
     }
 
-    private static Connection openDBConnection(DBInfo dbci) throws Exception {
+    public void doCreationScript(Connection conn, List<String> script) {
 
-        Connection conn = null;
+        Statement currentStatement = null;
+        for (String stringSQL : script) {
 
-        // this part of code is krivojopo ... but a will fix it later
-        if (dbci instanceof OracleDBInfo) {
-            Class.forName(dbci.getDbDriver());
-
-            conn = DriverManager.getConnection(dbci.getDbConnectionPrefix());
+            try {
+                // Execute statement
+                currentStatement = conn.createStatement();
+                currentStatement.execute(stringSQL);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                // Release resources
+                if (currentStatement != null) {
+                    try {
+                        currentStatement.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                currentStatement = null;
+            }
         }
-
-        if (dbci instanceof MySQLDBInfo) {
-            Class.forName(dbci.getDbDriver());
-
-            conn = DriverManager.getConnection(dbci.getDbConnectionPrefix());
-        }
-
-        if (dbci instanceof PostgresqlDBInfo) {
-            Class.forName(dbci.getDbDriver());
-
-            conn = DriverManager.getConnection(dbci.getDbConnectionPrefix());
-        }
-
-        return conn;
     }
+    public static void main(String[] args) {
 
-    public static boolean createDBSession() {
+        DBController dbController = new DBController();
 
-        if (isSessionCreated()) return true;
+        PostgresqlDBInfo pSQL = new PostgresqlDBInfo();
+        DBConnectionInfo connectionInfo = new DBConnectionInfo();
 
-        try {
+        DBCreationScriptInterface script = pSQL.getDBCreationScript();
 
+//        System.out.println(script.getUser());
+//        System.out.println(script.getDatabase());
+//        System.out.println(script.getTables());
+
+        connectionInfo.setDbDriver(pSQL.getDbDriver());
+        connectionInfo.setServerURL(pSQL.getDbConnectionPrefix() + "//178.62.247.230:5432/postgres");
+        connectionInfo.setUserName("timetaskmanager");
+        connectionInfo.setUserPassword("12345");
+
+        Locale defaultLocale = Locale.getDefault();
+
+        try (Connection dbConnection = dbController.openConnection(connectionInfo)) {
             // for correct connection to Oracle database
             Locale.setDefault(Locale.ENGLISH);
-
-//            dbUserTaskConnection = openDBConnection(new OracleDBInfo());
-//            dbUserTaskConnection = openDBConnection(new PostgresqlDBInfo());
-            dbConnection = openDBConnection(new MySQLDBInfo());
-
-            // ??? i need to find out about this line code ???
-            Locale.setDefault(defaultLocale);
-
-            sessionCreated = true;
+            dbController.doCreationScript(dbConnection, script.getDatabase());
 
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    public static boolean closeDBSession() {
-        try {
-            dbConnection.close();
-            dbConnection = null;
-            sessionCreated = false;
-            // ??? i need to find out about this line code ???
+        } finally {
             Locale.setDefault(defaultLocale);
-
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
         }
-    }
 
-    public void doCreationScript() {
+        connectionInfo.setServerURL(pSQL.getDbConnectionPrefix() + "//178.62.247.230:5432/timetaskmanager23");
+
+        try (Connection dbConnection = dbController.openConnection(connectionInfo)) {
+            // for correct connection to Oracle database
+            Locale.setDefault(Locale.ENGLISH);
+            dbController.doCreationScript(dbConnection, script.getTables());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Locale.setDefault(defaultLocale);
+        }
 
     }
 

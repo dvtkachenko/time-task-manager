@@ -107,4 +107,8 @@ public class DBCreationScript implements DBCreationScriptInterface {
         s.close();
     }
 
+    // it needs to update scripts by user
+    public void updateScript(List<String> script, String text) {
+
+    }
 }

@@ -1,6 +1,6 @@
 package application;
 
-import application.view.ServerInstallerViewController;
+import application.view.ViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,16 +8,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.net.URL;
-
 public class ServerInstaller extends Application {
 
-    final static String PATH_TO_SETUP_WIZARD_FXML = "view/ServerInstaller.fxml";
+    final static String PATH_TO_SETUP_INSTALLER_FXML = "view/ServerInstaller.fxml";
 
-    Stage mainStage;
-    ServerInstallerViewController ServerInstallerViewController;
-
-//    ActivePage activePage = ActivePage.FIRST_PAGE;
+    private Stage mainStage;
+    private MainController mainController;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,22 +23,22 @@ public class ServerInstaller extends Application {
         // Settings.load();
 
         primaryStage.setResizable(false);
-
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.setTitle(" --  Time Task Manager Server Installer  -- ");
         mainStage = primaryStage;
 
-        URL resource = getClass().getResource(PATH_TO_SETUP_WIZARD_FXML);
+//        URL resource = getClass().getResource(PATH_TO_SETUP_INSTALLER_FXML);
 
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_TO_SETUP_WIZARD_FXML));
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ServerInstaller.class.getResource("view/ServerInstaller.fxml"));
+        loader.setLocation(ServerInstaller.class.getResource(PATH_TO_SETUP_INSTALLER_FXML));
 
         try{
             AnchorPane pane = (AnchorPane)loader.load();
-            ServerInstallerViewController = loader.getController();
-            ServerInstallerViewController.setSetupWizard(this);
-            ServerInstallerViewController.setStage(mainStage);
+            mainController = MainController.getInstance();
+            mainController.setViewController(loader.getController());
+            mainController.setServerInstaller(this);
+            mainController.setStage(mainStage);
             Scene scene = new Scene(pane);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -60,12 +56,6 @@ public class ServerInstaller extends Application {
 
 //        mainStage.show();
 
-    }
-
-    public String showFileDialog() {
-        String pathToInstall = null;
-
-        return pathToInstall;
     }
 
     public static void main(String[] args) {

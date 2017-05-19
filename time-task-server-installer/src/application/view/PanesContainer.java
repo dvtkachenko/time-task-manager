@@ -2,7 +2,7 @@ package application.view;
 
 import javafx.scene.layout.Pane;
 
-import static application.view.ServerInstallerViewController.TOTAL_PANE;
+import static application.view.ViewController.TOTAL_PANE;
 
 /**
  * Created by diman on 12.05.2017.
@@ -12,7 +12,7 @@ public class PanesContainer {
     private int indexActivePane = 0;
     private Pane[] arrayOfPanes = new Pane[TOTAL_PANE];
 
-    public void initPanes(ServerInstallerViewController controller) {
+    public void initPanes(ViewController controller) {
 
         arrayOfPanes[0] = controller.getFirstStepPane();
         arrayOfPanes[1] = controller.getSecondStepPane();

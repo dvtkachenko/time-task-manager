@@ -5,7 +5,7 @@ package application.model;
  */
 public abstract class DBInfo {
 
-    private DBCreationScript creationScript = null;
+    private CreationDBScript creationScript = null;
 
     public abstract String getRDBMSName();
 
@@ -15,10 +15,10 @@ public abstract class DBInfo {
 
     public abstract String getScriptSuffixFileName();
 
-    public DBCreationScriptInterface getDBCreationScript() {
+    public CreationDBScript getDBCreationScript() {
 
         if (creationScript == null) {
-            creationScript = new DBCreationScript(getScriptSuffixFileName());
+            creationScript = new CreationDBScript(getScriptSuffixFileName());
 //            creationScript.initScript(getScriptSuffixFileName());
         }
 

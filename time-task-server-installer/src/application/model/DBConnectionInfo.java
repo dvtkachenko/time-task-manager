@@ -1,8 +1,5 @@
 package application.model;
 
-import java.net.InetAddress;
-import java.net.URL;
-
 /**
  * Created by diman on 18.05.2017.
  */

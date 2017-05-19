@@ -62,7 +62,7 @@ public class DBController {
         PostgresqlDBInfo pSQL = new PostgresqlDBInfo();
         DBConnectionInfo connectionInfo = new DBConnectionInfo();
 
-        DBCreationScriptInterface script = pSQL.getDBCreationScript();
+        CreationDBScript script = pSQL.getDBCreationScript();
 
 //        System.out.println(script.getUser());
 //        System.out.println(script.getDatabase());

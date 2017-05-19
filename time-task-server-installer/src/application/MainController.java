@@ -1,7 +1,7 @@
 package application;
 
 import application.model.DBController;
-import application.model.DBCreationScript;
+import application.model.CreationDBScript;
 import application.model.InstallationInfo;
 import application.view.ViewController;
 import javafx.stage.Stage;
@@ -21,7 +21,7 @@ public class MainController {
 
     private DBController dbController;
 
-    private DBCreationScript dbCreationScript;
+    private CreationDBScript creationDBScript;
     private InstallationInfo installationInfo;
 
     private ModelUpdater modelUpdater;

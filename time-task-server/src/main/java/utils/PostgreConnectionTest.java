@@ -2,6 +2,7 @@ package utils;
 
 import application.ApplicationContext;
 import application.exception.InternalServerErrorException;
+import dao.DaoManager;
 import dao.jdbc.ConnectionManager;
 import entity.User;
 

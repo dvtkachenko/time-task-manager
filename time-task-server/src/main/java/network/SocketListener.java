@@ -12,7 +12,7 @@ public class SocketListener extends Thread {
     @Override
     public void run() {
         ExecutorService pool = new ThreadPoolExecutor(
-                4, 64, 60L, TimeUnit.SECONDS,
+                8, 64, 60L, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(256));
         try (ServerSocket listener = new ServerSocket(5555)) {
             while (true) {

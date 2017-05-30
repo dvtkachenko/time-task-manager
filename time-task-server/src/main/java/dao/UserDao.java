@@ -35,4 +35,15 @@ public interface UserDao {
      */
     User updateUser(User user) throws InternalServerErrorException, DaoException;
 
+
+    /**
+     * Delete user from database.
+     *
+     * @param   user user for deletion.
+     * @return  true - if deletion successful or false - if deletion failed.
+     * @throws  InternalServerErrorException if internal server error occurred.
+     * @throws  DaoException if error occurred in process of interaction with database.
+     */
+    boolean deleteUser(User user) throws InternalServerErrorException, DaoException;
+
 }

@@ -5,11 +5,8 @@ import application.exception.PropertyNotFoundException;
 import application.exception.InternalServerErrorException;
 
 public class DaoManager {
-
-    // стоит ли оставить методы статическими, сделать singleton или создавать новые объекты для каждого запроса?
-
     /**
-     * Returns current in system implementation for UserDao.
+     * Returns currently using in system implementation for UserDao.
      *
      * @return UserDao implementation.
      * @throws InternalServerErrorException if internal server error occurred in process.
@@ -19,7 +16,7 @@ public class DaoManager {
     }
 
     /**
-     * Returns current in system implementation for TaskDao.
+     * Returns currently using in system implementation for TaskDao.
      *
      * @return TaskDao implementation.
      * @throws InternalServerErrorException if internal server error occurred in process.

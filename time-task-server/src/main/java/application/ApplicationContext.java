@@ -4,6 +4,8 @@ import application.exception.PropertyNotFoundException;
 import dao.DaoManager;
 import dao.UserDao;
 import dao.jdbc.ConnectionManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -11,40 +13,37 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
+/**
+ * Class which contains application properties
+ * like currently using interface implementations
+ * and database connection parameters
+ */
 public class ApplicationContext {
+    private static String propertyFilePath = "persistence.properties";
+    static Properties prop;
 
-    private static String propertyFilePath = "src\\main\\resources\\postgrePersistence.properties"; // after packaging path will change!!!
-
-    private static Map<String, String> propertyMap = new HashMap<>();
+    private static final Logger infoLogger = LogManager.getLogger("infoLogger");
+    private static final Logger errorLogger = LogManager.getLogger("errorLogger");
 
     public static void init() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(propertyFilePath))){
-            System.out.println("initializing application context...");
+        prop = new Properties();
+        try {
+            prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(propertyFilePath));
 
-            String propertyLine;
-            while ((propertyLine = bufferedReader.readLine()) != null) {
-                // можно ввести проверку на пустые строки и строки-комментарии
-                String propertyName = propertyLine.split("=")[0];
-                String propertyValue = propertyLine.split("=")[1];
-                propertyMap.put(propertyName, propertyValue);
-            }
-
-            System.out.println("application context initialized");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("Can't find property file");
+            infoLogger.info("Application context initialized");
         } catch (IOException e) {
+            errorLogger.error("Can't read property file. Application context initialization failed", e);
             throw new RuntimeException("Can't read property file");
         }
     }
 
     public static String getProperty(String propertyName) throws PropertyNotFoundException {
-        String propertyValue = propertyMap.get(propertyName);
+        String propertyValue = prop.getProperty(propertyName);
         if (propertyValue == null) {
             throw new PropertyNotFoundException("Can't find property " + propertyName);
         }
         return propertyValue;
     }
-
-
 }

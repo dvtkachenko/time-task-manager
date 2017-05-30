@@ -1,5 +1,9 @@
 package application.exception;
 
+/**
+ * Thrown when error occurred during
+ * interactions between classes or with local file system.
+ */
 public class InternalServerErrorException extends Exception {
     public InternalServerErrorException() {
     }

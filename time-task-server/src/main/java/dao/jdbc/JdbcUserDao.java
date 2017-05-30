@@ -7,15 +7,19 @@ import dao.UserDao;
 import dao.exception.*;
 import entity.Task;
 import entity.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.List;
 
 public class JdbcUserDao implements UserDao {
-    private static final String SELECT_USER_BY_LOGIN_SQL = "SELECT id, login, password, taskListVersion FROM Users WHERE login=?";
-    private static final String INSERT_USER_SQL = "INSERT INTO Users (login, password) VALUES (?, ?)";
-    private static final String UPDATE_USER_SQL = "UPDATE Users SET password=?, taskListVersion=? WHERE id=?";
+    private static final String SELECT_USER_BY_LOGIN_SQL = "SELECT id, login, password, taskListVersion FROM users WHERE login=?";
+    private static final String INSERT_USER_SQL = "INSERT INTO users (login, password) VALUES (?, ?)";
+    private static final String UPDATE_USER_SQL = "UPDATE users SET password=?, taskListVersion=? WHERE id=?";
+    private static final String DELETE_USER_SQL = "DELETE FROM users WHERE login=?";
 
+    private static final Logger infoLogger = LogManager.getLogger("infoLogger");
 
     @Override
     public User createUser(User user) throws InternalServerErrorException, DaoException {
@@ -44,16 +48,17 @@ public class JdbcUserDao implements UserDao {
             }
 
             User createdUser = new User(resultSet.getLong("id"), resultSet.getString("login"), resultSet.getString("password"), resultSet.getLong("taskListVersion"));
+            infoLogger.info("user "+ createdUser.getLogin() + " added to database");
             return createdUser;
 
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new DaoException("Connection with database failed", e);
         }
     }
 
     @Override
     public User loginUser(User user) throws InternalServerErrorException, DaoException {
+        User persistedUser;
         try (Connection connection = ConnectionManager.getConnection()) {
 
             PreparedStatement selectUserPreparedStatement = connection.prepareStatement(SELECT_USER_BY_LOGIN_SQL);
@@ -69,29 +74,33 @@ public class JdbcUserDao implements UserDao {
                 return null;
             }
 
-            User persistedUser = new User(resultSet.getLong("id"), resultSet.getString("login"), password, resultSet.getLong("taskListVersion"));
+            persistedUser = new User(resultSet.getLong("id"), resultSet.getString("login"), password, resultSet.getLong("taskListVersion"));
 
 //            if (persistedUser.getTaskListVersion() == user.getTaskListVersion()) {
 //                return persistedUser;
 //            }
 
-            TaskDao taskDao = DaoManager.getTaskDao();
-            List<Task> taskList = taskDao.getTaskListByUserId(persistedUser.getId());
-            persistedUser.setTaskList(taskList);
-            return persistedUser;
         }catch (SQLException e) {
-            e.printStackTrace();
             throw new DaoException("Connection with database failed", e);
         }
+
+        TaskDao taskDao = DaoManager.getTaskDao();
+        List<Task> taskList = taskDao.getTaskListByUserId(persistedUser.getId());
+        persistedUser.setTaskList(taskList);
+        infoLogger.info("user "+ persistedUser.getLogin() + " logged in to database");
+        return persistedUser;
     }
 
     @Override
     public User updateUser(User user) throws InternalServerErrorException, DaoException {
+        if (user.getId() == -1) {
+            throw new DaoException("User is not persisted in database");
+        }
+
+        TaskDao taskDao = DaoManager.getTaskDao();
+        List<Task> updatedTaskList = taskDao.updateTaskList(user.getTaskList());
+
         try (Connection connection = ConnectionManager.getConnection()){
-
-            TaskDao taskDao = DaoManager.getTaskDao();
-            List<Task> updatedTaskList = taskDao.updateTaskList(user.getTaskList());
-
             PreparedStatement updateUserPreparedStatement = connection.prepareStatement(UPDATE_USER_SQL);
             updateUserPreparedStatement.setString(1, user.getPassword());
             updateUserPreparedStatement.setLong(2, user.getTaskListVersion());
@@ -102,9 +111,25 @@ public class JdbcUserDao implements UserDao {
             }
 
             user.setTaskList(updatedTaskList);
+            infoLogger.info("user "+ user.getLogin() + " updated in database");
             return user;
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DaoException("Connection with database failed", e);
+        }
+    }
+
+    @Override
+    public boolean deleteUser(User user) throws InternalServerErrorException, DaoException {
+        try (Connection connection = ConnectionManager.getConnection()) {
+            PreparedStatement deleteUserPreparedStatement = connection.prepareStatement(DELETE_USER_SQL);
+            deleteUserPreparedStatement.setString(1, user.getLogin());
+            if(deleteUserPreparedStatement.executeUpdate() != 1 ) {
+                return false;
+            }
+
+            infoLogger.info("user "+ user.getLogin() + " deleted from database");
+            return true;
+        } catch (SQLException e) {
             throw new DaoException("Connection with database failed", e);
         }
     }

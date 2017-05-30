@@ -1,7 +1,7 @@
 package dao.jdbc;
 
-import application.exception.InternalServerErrorException;
 import dao.TaskDao;
+import application.exception.InternalServerErrorException;
 import dao.exception.DaoException;
 import entity.Task;
 
@@ -12,21 +12,21 @@ import java.util.*;
 
 public class JdbcTaskDao implements TaskDao {
     private static final String SELECT_TASKS_BY_USER_ID_SQL = "SELECT " +
-            "id, taskName, parentTaskId, creationTime, finishTime, suggestedTaskDuration, elapsedTaskDuration, finished " +
-            "FROM Tasks WHERE userId=?";
+            "id, taskName, parentTaskId, creationTime, finishTime, suggestedTaskDuration, elapsedTaskDuration, finished, comments " +
+            "FROM tasks WHERE userId=?";
 
-    private static final String INSERT_TASK_SQL = "INSERT INTO Tasks" +
-            "(userId, taskName, parentTaskId, creationTime, finishTime, suggestedTaskDuration, elapsedTaskDuration, finished) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_TASK_SQL = "INSERT INTO tasks" +
+            "(userId, taskName, parentTaskId, creationTime, finishTime, suggestedTaskDuration, elapsedTaskDuration, finished, comments) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    private static final String UPDATE_TASK_BY_ID_SQL = "UPDATE Tasks SET " +
-            "elapsedTaskDuration=?, finishTime=?, finished=? " +
+    private static final String UPDATE_TASK_BY_ID_SQL = "UPDATE tasks SET " +
+            "elapsedTaskDuration=?, finishTime=?, finished=?, comments=? " +
             "WHERE id=?";
 
-    private static final String DELETE_TASK_BY_ID_SQL = "DELETE FROM Tasks WHERE id=?";
+    private static final String DELETE_TASK_BY_ID_SQL = "DELETE FROM tasks WHERE id=?";
 
     private static final String SELECT_TASK_ID_BY_USER_ID_AND_CREATION_TIME_SQL = "SELECT id " +
-            "FROM Tasks WHERE userId=? AND creationTime=?";
+            "FROM tasks WHERE userId=? AND creationTime=?";
 
     PreparedStatement selectTasksPreparedStatement;
     PreparedStatement insertTaskPreparedStatement;
@@ -63,7 +63,9 @@ public class JdbcTaskDao implements TaskDao {
                 Duration elapsedTaskDuration = Duration.parse(resultSet.getString("elapsedTaskDuration"));
                 boolean finished = resultSet.getBoolean("finished");
 
-                Task task = new Task(id, userId, taskName, parentTaskId, creationTime, finishTime, suggestedTaskDuration, elapsedTaskDuration, finished);
+                String comments = resultSet.getString("comments");
+
+                Task task = new Task(id, userId, taskName, parentTaskId, creationTime, finishTime, suggestedTaskDuration, elapsedTaskDuration, finished, comments);
                 idTaskMap.put(id, task);
             }
 
@@ -83,7 +85,6 @@ public class JdbcTaskDao implements TaskDao {
             return taskList;
 
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new DaoException("Error occurred in process of retrieving task list", e);
         }
     }
@@ -99,40 +100,49 @@ public class JdbcTaskDao implements TaskDao {
             insertedTaskList = new ArrayList<>();
             alreadyInListTaskIds = new ArrayList<>();
 
-            if (!processTaskList(taskList)){
-                throw new DaoException("TaskList Update failed");
-            }
+            processTaskList(taskList);
+
             return insertedTaskList;
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new DaoException("TaskList Update failed", e);
         }
     }
 
-    private boolean processTaskList(List<Task> taskList) throws SQLException, DaoException {
+    /**
+     * Sequentially process tasks from list in attempt to save, change or delete task from database.
+     *
+     * @param   taskList task list for update.
+     * @throws  SQLException if problems occurred during interaction with database.
+     * @throws  DaoException if one of task update failed.
+     */
+    private void processTaskList(List<Task> taskList) throws SQLException, DaoException {
         for (Task currentTask : taskList) {
-            if (!processTask(currentTask)) {
-                return false;
-            }
+            processTask(currentTask);
         }
-        return true;
     }
 
-    private boolean processTask(Task task) throws SQLException, DaoException {
+    /**
+     * Attempt to save, change or delete specified task from database.
+     *
+     * @param   task task for update.
+     * @throws  SQLException if problems occurred during interaction with database.
+     * @throws  DaoException if task update failed.
+     */
+    private void processTask(Task task) throws SQLException, DaoException {
         if (!task.isChanged()) {
-            return true;
+            return;
         }
 
         if (task.isForDeletion()) {
             deleteTask(task);
-            return true;
+            return;
         } else if (task.getId() != -1) {
             updateTask(task);
         } else {
             insertTask(task);
         }
 
-        return processTaskList(task.getSubTaskList());
+        processTaskList(task.getSubTaskList());
 
     }
 
@@ -147,17 +157,16 @@ public class JdbcTaskDao implements TaskDao {
             finishTimeString = task.getFinishTime().toString();
         }
         insertTaskPreparedStatement.setString(5, finishTimeString);
-
         insertTaskPreparedStatement.setString(6, task.getSuggestedTaskDuration().toString());
         insertTaskPreparedStatement.setString(7, task.getElapsedTaskDuration().toString());
         insertTaskPreparedStatement.setBoolean(8, task.isFinished());
+        insertTaskPreparedStatement.setString(9, task.getComments());
 
         if (insertTaskPreparedStatement.executeUpdate() != 1) {
-            throw new DaoException("Update failed");
+            throw new DaoException("Can't insert task. Update failed");
         }
 
-        Task savedTask = selectInsertedTask(task.getUserId(), task.getCreationTime());
-        long taskId = savedTask.getId();
+        long taskId = getInsertedTaskId(task.getUserId(), task.getCreationTime());
         task.setId(taskId);
 
         if (!alreadyInListTaskIds.contains(task.getParentTaskId())) {
@@ -182,10 +191,11 @@ public class JdbcTaskDao implements TaskDao {
         updateTaskPreparedStatement.setString(2, finishTimeString);
 
         updateTaskPreparedStatement.setBoolean(3, task.isFinished());
-        updateTaskPreparedStatement.setLong(4, task.getId());
+        updateTaskPreparedStatement.setString(4, task.getComments());
+        updateTaskPreparedStatement.setLong(5, task.getId());
 
         if (updateTaskPreparedStatement.executeUpdate() != 1) {
-            throw new DaoException("Update failed");
+            throw new DaoException("Can't update task. Update failed");
         }
         task.setChanged(false);
     }
@@ -197,15 +207,22 @@ public class JdbcTaskDao implements TaskDao {
         deleteTaskPreparedStatement.setLong(1, task.getId());
 
         if (deleteTaskPreparedStatement.executeUpdate() != 1) {
-            throw new DaoException("Update failed");
+            throw new DaoException("Can't delete task. Update failed");
         }
         task.setChanged(false);
     }
 
-    // get task from DB with id
-    // у одного пользователя не может быть две задачи созданные точно в одно и тоже время,
-    // поэтому здесь в качестве идентификатора используется userId и время создания
-    private Task selectInsertedTask(long userId, LocalDateTime creationTime) throws SQLException, DaoException {
+    /**
+     * Retrieve task with specified parameters from database and return it's id.
+     * Used for getting id for just inserted task.
+     *
+     * @param   userId task owner user's id.
+     * @param   creationTime task's time of creation.
+     * @return  task's id assigned by database.
+     * @throws  SQLException if problems occurred during interaction with database.
+     * @throws  DaoException if specified task not found in database.
+     */
+    private long getInsertedTaskId(long userId, LocalDateTime creationTime) throws SQLException, DaoException {
         PreparedStatement preparedStatement = selectInsertedTaskPreparedStatement;
         preparedStatement.setLong(1, userId);
         preparedStatement.setString(2, creationTime.toString());
@@ -215,7 +232,6 @@ public class JdbcTaskDao implements TaskDao {
             throw new DaoException("Can't retrieve inserted task. Update failed");
         }
 
-        Task idOnlyTask = new Task(resultSet.getLong("id"));
-        return idOnlyTask;
+        return resultSet.getLong("id");
     }
 }

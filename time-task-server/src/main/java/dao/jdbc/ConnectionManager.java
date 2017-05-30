@@ -4,6 +4,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import application.ApplicationContext;
 import application.exception.PropertyNotFoundException;
 import application.exception.InternalServerErrorException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.beans.PropertyVetoException;
 import java.sql.Connection;
@@ -13,12 +15,13 @@ import java.util.Locale;
 public class ConnectionManager {
     private static ComboPooledDataSource dataSource;
 
+    private static final Logger infoLogger = LogManager.getLogger("infoLogger");
+    private static final Logger errorLogger = LogManager.getLogger("errorLogger");
+
     static {
         Locale.setDefault(Locale.ENGLISH);
 
         try {
-            System.out.println("initializing connection manager...");
-
             String driverClass = ApplicationContext.getProperty("driverClass");
             String jdbcUrl = ApplicationContext.getProperty("jdbcUrl");
             String user = ApplicationContext.getProperty("user");
@@ -33,18 +36,18 @@ public class ConnectionManager {
             // connection pool
             dataSource.setMinPoolSize(10);
             dataSource.setAcquireIncrement(10);
-            dataSource.setMaxPoolSize(100);
-//            dataSource.setMaxConnectionAge(10*60*1000);
-//            dataSource.setMaxIdleTime(1*60*1000);
+            dataSource.setMaxPoolSize(50);
             // statement pool
             dataSource.setMaxStatements(180);
             dataSource.setMaxStatementsPerConnection(10);
 
-            System.out.println("connection manager initialized");
+            infoLogger.info("Connection manager initialized");
         } catch (PropertyVetoException e) {
-            e.printStackTrace();
+            errorLogger.error("Property can't be set to specified value", e);
+            throw new RuntimeException("Property can't be set to specified value", e);
         } catch (PropertyNotFoundException e) {
-            e.printStackTrace();
+            errorLogger.error("Property for ConnectionManager not found", e);
+            throw new RuntimeException("Property for ConnectionManager not found", e);
         }
     }
 

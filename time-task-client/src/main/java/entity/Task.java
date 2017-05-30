@@ -7,21 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task implements Serializable {
+
     public static final long serialVersionUID = 123L;
 
-    private long id = -1;
+    private long id = -1; // -1 for not yet saved in database task
     private long userId;
     private String taskName;
     private long parentTaskId = -1; // -1 if no parent
     private Task parentTask;
-    private List<Task> subTaskList = new ArrayList<>(); // можно отложить до появления первой подзадачи
+    private List<Task> subTaskList = new ArrayList<>();
     private LocalDateTime creationTime;
     private LocalDateTime finishTime;
     private Duration suggestedTaskDuration;
     private Duration elapsedTaskDuration;
     private String comments;
     private boolean finished;
+
+    /** Set true on any change to task. Indicate that task need to be updated in database */
     private boolean changed;
+
+    /** Set true for task which need to be removed from database*/
     private boolean forDeletion;
 
     public Task() {
@@ -37,7 +42,7 @@ public class Task implements Serializable {
         this.comments = comments;
     }
 
-    public Task(long userId, String taskName, LocalDateTime creationTime, Duration suggestedTaskDuration, Task parentTask) {
+    public Task(long userId, String taskName, LocalDateTime creationTime, Duration suggestedTaskDuration, Task parentTask, String comments) {
         // желательно сделать проверку на то, чтобы сумарная длительность подзадач не привышала длительность родительской задачи
 
         this.userId = userId;
@@ -47,6 +52,8 @@ public class Task implements Serializable {
         this.elapsedTaskDuration = Duration.ZERO;
         this.finished = false;
         this.changed = true;
+        this.forDeletion = false;
+        this.comments = comments;
 
         this.parentTask = parentTask;
         if (parentTask != null){
@@ -206,16 +213,12 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", taskName='" + taskName + '\'' +
-                ", parentTaskId=" + parentTaskId +
-                ", creationTime=" + creationTime +
-                ", suggestedTaskDuration=" + suggestedTaskDuration +
-                ", elapsedTaskDuration=" + elapsedTaskDuration +
-                ", finished=" + finished +
-                ", subTasks=" + subTaskList +
-                '}';
+        if (suggestedTaskDuration.getSeconds() == 0) {
+            return taskName;
+        } else {
+            long minutes = suggestedTaskDuration.getSeconds() / 60;
+            long seconds = suggestedTaskDuration.getSeconds() % 60;
+            return taskName + " " + String.format("%02d:%02d", minutes, seconds);
+        }
     }
 }

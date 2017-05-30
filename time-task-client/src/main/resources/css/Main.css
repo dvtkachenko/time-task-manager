@@ -9,7 +9,7 @@
 
 #main {
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 7px;
+    -fx-background-radius: 5px;
     -fx-padding: 0px;
 }
 
@@ -50,6 +50,11 @@
     -fx-background-color: rgba(135, 222, 255, 0.9);
 }
 
+.button:pressed {
+    -fx-translate-x: 1px;
+    -fx-translate-y: 2px;
+}
+
 #play {
     -fx-background-image: url("/icons/play.png");
     -fx-background-repeat: no-repeat;
@@ -62,7 +67,7 @@
     -fx-background-position: center center;
 }
 
-#timer {
+.timer {
     -fx-min-width: 125px;
     -fx-padding: 0px 20px;
     -fx-text-fill: white;
@@ -79,12 +84,15 @@
 
 .tree-view {
     -fx-background-color:transparent;
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
     -fx-focus-color: transparent;
     -fx-focus-faint-color: transparent;
 }
 
 .tree-cell {
-    -fx-background-radius: 4px;
+    -fx-font-family: Arial, Helvetica, sans-serif;
+    -fx-padding: 1px 0px 3px 0px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
 }

@@ -1,16 +1,21 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User implements Serializable {
+
     public static final long serialVersionUID = 124L;
 
-    private long id = -1;
+    private long id = -1; // -1 for not yet saved in database user
     private String login;
     private String password;
-    private List<Task> taskList;
 
+    /** Contains user's root tasks */
+    private List<Task> taskList = new ArrayList<>();;
+
+    /** Version changes on every successful update to database */
     private long taskListVersion;
 
     public User() {
@@ -69,11 +74,31 @@ public class User implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        return !(password != null ? !password.equals(user.password) : user.password != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = login != null ? login.hashCode() : 0;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", taskList=" + taskList +
+                ", taskListVersion=" + taskListVersion +
                 '}';
     }
 }

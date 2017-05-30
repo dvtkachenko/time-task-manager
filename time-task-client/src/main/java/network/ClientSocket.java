@@ -1,5 +1,6 @@
 package network;
 
+import entity.Task;
 import entity.User;
 import message.Message;
 import message.MessageType;
@@ -25,11 +26,29 @@ public class ClientSocket {
 
             responseMessage = (Message) ois.readObject();
             System.out.println(responseMessage);
+            for (Task task: responseMessage.getUser().getTaskList()) {
+                System.out.println(task.getSubTaskList());
+            }
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }
         return responseMessage;
+    }
+
+    public void sendMessage(User user, MessageType type) {
+        try (
+                Socket socket = new Socket("localhost", 5555);
+                ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+                ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())
+        ) {
+            Message message  = new Message(type, null, user);
+
+            oos.writeObject(message);
+            oos.flush();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 }

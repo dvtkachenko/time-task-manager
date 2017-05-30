@@ -1,5 +1,6 @@
 package application;
 
+import application.controller.MainController;
 import application.view.ViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.io.File;
 
 public class ServerInstaller extends Application {
 
@@ -35,10 +38,13 @@ public class ServerInstaller extends Application {
 
         try{
             AnchorPane pane = (AnchorPane)loader.load();
-            mainController = MainController.getInstance();
-            mainController.setViewController(loader.getController());
-            mainController.setServerInstaller(this);
-            mainController.setStage(mainStage);
+
+            ViewController viewController = loader.getController();
+            mainController = new MainController(mainStage, this, viewController);
+//            mainController.setViewController(viewController);
+//            mainController.getViewController().setMainController(mainController);
+//            mainController.setServerInstaller(this);
+//            mainController.setStage(mainStage);
             Scene scene = new Scene(pane);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -46,7 +52,7 @@ public class ServerInstaller extends Application {
             e.printStackTrace();
         }
 
-        this.mainStage = primaryStage;
+//        this.mainStage = primaryStage;
 
 //        mainStage.setScene(new Scene(root, 600, 400));
 

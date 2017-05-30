@@ -1,47 +1,98 @@
 package application.model;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 /**
  * Created by diman on 18.05.2017.
  */
 public class DBConnectionInfo {
 
+    public enum RDBMS {
+        MySQL, PostgreSQL, Oracle;
+    }
+
+    private String rdbmsName = null;
+    private String scriptSuffixFileName = null;
     private String dbDriver = null;
-
-    private String serverURL = null;
-
+    private String dbConnectionPrefix = null;
+    private String dbFullPathConnection = null;
+    private String databaseName = null;
     private String userName = null;
-
     private String userPassword = null;
+
+    public DBConnectionInfo(DBConnectionInfo.RDBMS selectedRDBMS) {
+
+        Properties property = new Properties();
+
+        try (FileInputStream fis = new FileInputStream(InstallationInfo.PATH_TO_RESOURCES + "database.properties")) {
+
+            property.load(fis);
+            String keyPrefix = null;
+
+            switch (selectedRDBMS) {
+                case MySQL: keyPrefix = "mysql."; break;
+                case PostgreSQL: keyPrefix = "postgresql."; break;
+                case Oracle: keyPrefix = "oracle."; break;
+            }
+
+            rdbmsName = property.getProperty(keyPrefix + "rdbms_name");
+            scriptSuffixFileName = property.getProperty(keyPrefix + "script_suffix_filename");
+            dbDriver = property.getProperty(keyPrefix + "db_driver");
+            dbConnectionPrefix = property.getProperty(keyPrefix + "db_connection_prefix");
+            databaseName = property.getProperty("database_name");
+            userName = property.getProperty("user_name");
+            userPassword = property.getProperty("user_password");
+
+        } catch (IOException e) {
+            System.err.println("Error : there isn't database.properties. " + e.getMessage());
+        }
+
+    }
+
+    public String getRdbmsName() {
+        return rdbmsName;
+    }
+
+    public String getScriptSuffixFileName() {
+        return scriptSuffixFileName;
+    }
 
     public String getDbDriver() {
         return dbDriver;
     }
 
-    public void setDbDriver(String dbDriver) {
-        this.dbDriver = dbDriver;
+    public String getDbConnectionPrefix() {
+        return dbConnectionPrefix;
     }
 
-    public String getServerURL() {
-        return serverURL;
+    public String getDbFullPathConnection() {
+        return dbFullPathConnection;
     }
 
-    public void setServerURL(String serverURL) {
-        this.serverURL = serverURL;
+    public String getDatabaseName() {
+        return databaseName;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getUserPassword() {
         return userPassword;
+    }
+
+    public void setDbFullPathConnection(String dbFullPathConnection) {
+        this.dbFullPathConnection = dbFullPathConnection;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
 }

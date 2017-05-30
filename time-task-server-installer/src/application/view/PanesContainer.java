@@ -52,7 +52,7 @@ public class PanesContainer {
         return indexActivePane;
     }
 
-    public Pane[] getPanes() {
-        return arrayOfPanes;
-    }
+//    public Pane[] getPanes() {
+//        return arrayOfPanes;
+//    }
 }

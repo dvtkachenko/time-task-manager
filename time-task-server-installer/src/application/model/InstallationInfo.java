@@ -1,57 +1,101 @@
 package application.model;
 
-import java.net.InetAddress;
-import java.net.URL;
-
 /**
  * Created by diman on 17.05.2017.
  */
+
+/**
+ *  This class consists information about installation process.
+ *
+ */
 public class InstallationInfo {
 
-    private int stepInstallation = 0;
+    private DBConnectionInfo dbConnectionInfo;
 
-    private String pathToInstallation;
+    private CreationDBScript creationDBScript;
+    private boolean disableEditScripts = true;
 
-    private DBInfo dbInfo = null;
+    //    private final String PATH_TO_SCRIPT = "d:\\MyDevelopment\\JavaCourse\\TTMServerInstaller\\out\\production\\TTMServerInstaller\\application\\resources\\";
+    public static final String PATH_TO_RESOURCES = "out\\production\\TTMServerInstaller\\application\\resources\\";
 
-    private boolean createUserAuto = false;
+//    private int stepInstallation = 0;
+
+    // default value can be changed by user during installation process
+    private String installationPath = "D:\\Temp\\TTMServer";
+    private String serverAppFileName = "notepad.exe";
+
+    private DBConnectionInfo.RDBMS selectedRDBMS = DBConnectionInfo.RDBMS.PostgreSQL;
+
+    private boolean createUserAuto = true;
+
+    private String selectedRDBMSName;
 
     private String adminRDBMSUsername = null;
 
-    private String adminRDBMSPAssword = null;
+    private String adminRDBMSPassword = null;
 
     private String ttmUserName = null;
 
     private String ttmUserPassword = null;
 
-    private String serverAddress = null;
+//    private String serverAddress = null;
+    private String serverAddress = "178.62.247.230";
 
-    private String serverPort = null;
+//    private String serverPort = null;
+    private String serverPort = "5432";
 
     private boolean launchServer = true;
 
-    public int getStepInstallation() {
-        return stepInstallation;
+    public CreationDBScript getCreationDBScript() {
+        return creationDBScript;
     }
 
-    public void setStepInstallation(int stepInstallation) {
-        this.stepInstallation = stepInstallation;
+    public boolean isDisableEditScripts() {
+        return disableEditScripts;
     }
 
-    public String getPathToInstallation() {
-        return pathToInstallation;
+    public DBConnectionInfo getDbConnectionInfo() {
+        return dbConnectionInfo;
     }
 
-    public void setPathToInstallation(String pathToInstallation) {
-        this.pathToInstallation = pathToInstallation;
+//    public void setDbConnectionInfo(DBConnectionInfo dbConnectionInfo) {
+//        this.dbConnectionInfo = dbConnectionInfo;
+//    }
+
+//    public void setCreationDBScript(CreationDBScript creationDBScript) {
+//        this.creationDBScript = creationDBScript;
+//    }
+//
+//    public int getStepInstallation() {
+//        return stepInstallation;
+//    }
+//
+//    public void setStepInstallation(int stepInstallation) {
+//        this.stepInstallation = stepInstallation;
+//    }
+
+    public String getInstallationPath() {
+        return installationPath;
     }
 
-    public DBInfo getDbInfo() {
-        return dbInfo;
+    public String getServerAppFileName() {
+        return serverAppFileName;
     }
 
-    public void setDbInfo(DBInfo dbInfo) {
-        this.dbInfo = dbInfo;
+    public void setInstallationPath(String installationPath) {
+        this.installationPath = installationPath;
+    }
+
+    public String getSelectedRDBMSName() {
+        return selectedRDBMSName;
+    }
+
+    public DBConnectionInfo.RDBMS getSelectedRDBMS() {
+        return selectedRDBMS;
+    }
+
+    public void setSelectedRDBMS(DBConnectionInfo.RDBMS selectedRDBMS) {
+        this.selectedRDBMS = selectedRDBMS;
     }
 
     public boolean isCreateUserAuto() {
@@ -70,12 +114,12 @@ public class InstallationInfo {
         this.adminRDBMSUsername = adminRDBMSUsername;
     }
 
-    public String getAdminRDBMSPAssword() {
-        return adminRDBMSPAssword;
+    public String getAdminRDBMSPassword() {
+        return adminRDBMSPassword;
     }
 
-    public void setAdminRDBMSPAssword(String adminRDBMSPAssword) {
-        this.adminRDBMSPAssword = adminRDBMSPAssword;
+    public void setAdminRDBMSPassword(String adminRDBMSPAssword) {
+        this.adminRDBMSPassword = adminRDBMSPAssword;
     }
 
     public String getTtmUserName() {
@@ -116,5 +160,14 @@ public class InstallationInfo {
 
     public void setLaunchServer(boolean launchServer) {
         this.launchServer = launchServer;
+    }
+
+    public void initInstallationInfoFromFile() {
+        dbConnectionInfo = new DBConnectionInfo(selectedRDBMS);
+        selectedRDBMSName = dbConnectionInfo.getRdbmsName();
+        ttmUserName = dbConnectionInfo.getUserName();
+        ttmUserPassword = dbConnectionInfo.getUserPassword();
+        creationDBScript = new CreationDBScript();
+        creationDBScript.readScriptFiles(dbConnectionInfo.getScriptSuffixFileName());
     }
 }

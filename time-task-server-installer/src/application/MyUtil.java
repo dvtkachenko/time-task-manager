@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class MyUtil {
 
-    public static void CopyFileFromTo(String pathFrom, String pathTo) {
+    public static void copyFileFromTo(String pathFrom, String pathTo) {
         FileInputStream inFile = null;
         FileOutputStream outFile = null;
 
@@ -38,7 +38,7 @@ public class MyUtil {
             }
     }
 
-    public static void SaveToFile(String fullFileName, List<String> rowsToFile) {
+    public static void saveToFile(String fullFileName, List<String> rowsToFile) {
         try(FileWriter writer = new FileWriter(fullFileName, false))
         {
            for (String row : rowsToFile) {

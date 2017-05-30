@@ -1,21 +1,26 @@
 package application.view;
 
-import application.MainController;
-import application.ServerInstaller;
+import application.controller.MainController;
+import application.model.DBConnectionInfo;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.StageStyle;
+
+import java.io.File;
+import java.util.Optional;
 
 public class ViewController {
 
     public final static int TOTAL_PANE = 7;
 
-    // we have to know when scrips were changed by user
-    // and we need to update our scripts
+    // we have to know when text fields were changed by user
+    // and we need to update our information in InstallationInfo
     private boolean userScriptChanged = false;
     private boolean databaseScriptChanged = false;
     private boolean tablesScriptChanged = false;
+    private boolean installationPathChanged = false;
 
     @FXML
     private Button backButton;
@@ -46,6 +51,9 @@ public class ViewController {
 
     @FXML
     private Pane seventhStepPane;
+
+    @FXML
+    private TextField textInputInstallationPath;
 
     @FXML
     private ToggleGroup radioButtonToggleGroup;
@@ -103,6 +111,7 @@ public class ViewController {
     private CheckBox launchCheckBox;
 
     private MainController mainController;
+//    private ModelViewDataUpdater modelUpdater;
 
     public PanesContainer panesContainer;
 
@@ -137,6 +146,147 @@ public class ViewController {
         return seventhStepPane;
     }
 
+
+    public TextField getTextInputInstallationPath() {
+        return textInputInstallationPath;
+    }
+
+    public RadioButton getRadioButtonOracle() {
+        return radioButtonOracle;
+    }
+
+    public RadioButton getRadioButtonPostgreSQL() {
+        return radioButtonPostgreSQL;
+    }
+
+    public RadioButton getRadioButtonMySQL() {
+        return radioButtonMySQL;
+    }
+
+    public TextField getTextInputConnectionIP() {
+        return textInputConnectionIP;
+    }
+
+    public TextField getTextInputPort() {
+        return textInputPort;
+    }
+
+    public Label getLabelInputUsername() {
+        return labelInputUsername;
+    }
+
+    public TextField getTextInputUsername() {
+        return textInputUsername;
+    }
+
+    public TextField getTextInputPassword() {
+        return textInputPassword;
+    }
+
+    public TextArea getTextAreaCreateUserScript() {
+        return textAreaCreateUserScript;
+    }
+
+    public TextArea getTextAreaCreateDBScript() {
+        return textAreaCreateDBScript;
+    }
+
+    public TextArea getTextAreaCreateDBTablesScript() {
+        return textAreaCreateDBTablesScript;
+    }
+
+    public CheckBox getLaunchCheckBox() {
+        return launchCheckBox;
+    }
+
+    public CheckBox getAllowAutoCreatingUserCheckBox() {
+        return allowAutoCreatingUserCheckBox;
+    }
+
+    public void setInstallationPath(String installationPath) {
+        textInputInstallationPath.setText(installationPath);
+    }
+
+    public void setDefaultRDBMS(DBConnectionInfo.RDBMS defaultRDBMS) {
+
+        switch (defaultRDBMS) {
+            case MySQL: radioButtonMySQL.setSelected(true); break;
+            case PostgreSQL: radioButtonPostgreSQL.setSelected(true); break;
+            case Oracle: radioButtonOracle.setSelected(true); break;
+        }
+    }
+
+//    // needs changes
+//    public void setRadioButtonOracle(RadioButton radioButtonOracle) {
+//        this.radioButtonOracle = radioButtonOracle;
+//    }
+//
+//    // needs changes
+//    public void setRadioButtonPostgreSQL(RadioButton radioButtonPostgreSQL) {
+//        this.radioButtonPostgreSQL = radioButtonPostgreSQL;
+//    }
+//
+//    // needs changes
+//    public void setRadioButtonMySQL(RadioButton radioButtonMySQL) {
+//        this.radioButtonMySQL = radioButtonMySQL;
+//    }
+
+    public void setAllowAutoCreatingUserCheckBox(boolean allowAutoCreatingUser) {
+        allowAutoCreatingUserCheckBox.setSelected(allowAutoCreatingUser);
+    }
+
+    public void setTextInputConnectionIP(String inputConnectionIP) {
+        textInputConnectionIP.setText(inputConnectionIP);
+    }
+
+    public void setTextInputPort(String inputPort) {
+        textInputPort.setText(inputPort);
+    }
+
+    public void setLabelInputUsername(String titleUsername) {
+        labelInputUsername.setText(titleUsername);
+    }
+
+    public void setTextInputUsername(String username) {
+        textInputUsername.setText(username);
+    }
+
+    public void setTextInputPassword(String password) {
+        textInputPassword.setText(password);
+    }
+
+    public void setTextAreaCreateUserScript(String createUserScript) {
+        textAreaCreateUserScript.setText(createUserScript);
+    }
+
+    public void setTextAreaCreateDBScript(String createDBScript) {
+        textAreaCreateDBScript.setText(createDBScript);
+    }
+
+    public void setTextAreaCreateDBTablesScript(String createDBTablesScript) {
+        textAreaCreateDBTablesScript.setText(createDBTablesScript);
+    }
+
+    public void setLabelRDBMS(String selectedRDBMS) {
+        labelRDBMS.setText(selectedRDBMS);
+    }
+
+    public void setLabelConnectionIP(String connectionIP) {
+        labelConnectionIP.setText(connectionIP);
+    }
+
+    public void setLabelPort(String port) {
+        labelPort.setText(port);
+    }
+
+    public void setLabelDBUsername(String dbUsername) {
+        labelDBUsername.setText(dbUsername);
+    }
+
+    public void setLaunchCheckBox(boolean launch) {
+        launchCheckBox.setSelected(launch);
+    }
+
     @FXML
     private void initialize() {
         panesContainer = new PanesContainer();
@@ -150,14 +300,28 @@ public class ViewController {
         this.mainController = mainController;
     }
 
+//    public void setModelUpdater(ModelViewDataUpdater modelUpdater) {
+//        this.modelUpdater = modelUpdater;
+//    }
+
     @FXML
     private void handlePressNextButton() {
 
         int activePane = panesContainer.getIndexActivePane();
 
-        // here is a do method
-        mainController.getInstallerStepAction().doNextStep(activePane);
+        // update model data information
+//        modelUpdater.updateModelView(activePane);
 
+        // if data in pane's controls are incorrect we return to edit
+        if (!mainController.checkInputData(activePane)) {
+            showWarningDialog("You have to enter correct installation information");
+            return;
+        }
+        mainController.doNextStep(activePane);
+//        invoke model updater
+//        modelUpdater.....
+
+        // show hide controls and panes
         switch (activePane) {
 
             case 0 : backButton.setDisable(false);
@@ -189,8 +353,9 @@ public class ViewController {
         int activePane = panesContainer.getIndexActivePane();
 
         // here is a do method
-        mainController.getInstallerStepAction().doBackStep(activePane);
+        mainController.doBackStep(activePane);
 
+        // show hide controls and panes
         switch (activePane) {
 
             case 0 : break;
@@ -218,10 +383,8 @@ public class ViewController {
 
     @FXML
     private void handleCancelBackButton() {
-        try {
-//            serverInstaller.stop();
-        } catch (Exception e) {
-
+        if (showConfirmationDialog("     Are you sure you want to exit ?")) {
+            mainController.exitFromInstaller();
         }
     }
 
@@ -241,9 +404,50 @@ public class ViewController {
     }
 
     @FXML
-    private void handleOpenFileDialogButton() {
-        // do some action
-
+    private void textInputInstallationPathChanged() {
+        if (!installationPathChanged) installationPathChanged = true;
     }
 
+    @FXML
+    private void handleOpenFileDialogButton() {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+
+        File directory = directoryChooser.showDialog(mainController.getMainStage());
+
+        if (directory != null) {
+            textInputInstallationPath.setText(directory.getPath());
+            installationPathChanged = true;
+        }
+//        modelUpdater.updateIIInstallationPath(textInputInstallationPath.getText());
+    }
+
+    public boolean showConfirmationDialog(String dialogMessage) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.initOwner(mainController.getMainStage());
+        alert.setTitle(" -- Confirmation Dialog --");
+        alert.setHeaderText(dialogMessage);
+        alert.initStyle(StageStyle.UTILITY);
+//        alert.setContentText(dialogMessage);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void showWarningDialog(String warningMessage) {
+
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.initOwner(mainController.getMainStage());
+        alert.setTitle(" -- Warning Dialog -- ");
+        alert.setHeaderText(warningMessage);
+        alert.initStyle(StageStyle.UTILITY);
+//        alert.setContentText("Careful with the next step!");
+
+        alert.showAndWait();
+
+    }
 }

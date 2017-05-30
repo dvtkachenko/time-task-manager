@@ -56,7 +56,7 @@ END;
 $$;
 
 
-ALTER FUNCTION public.set_task_id() OWNER TO timetaskmanager1;
+ALTER FUNCTION public.set_task_id() OWNER TO timetaskmanager;
 
 --
 -- TOC entry 185 (class 1255 OID 16433)
@@ -74,7 +74,7 @@ END;
 $$;
 
 
-ALTER FUNCTION public.set_user_id() OWNER TO timetaskmanager1;
+ALTER FUNCTION public.set_user_id() OWNER TO timetaskmanager;
 
 SET default_tablespace = '';
 
@@ -99,7 +99,7 @@ CREATE TABLE tasks (
 );
 
 
-ALTER TABLE tasks OWNER TO timetaskmanager1;
+ALTER TABLE tasks OWNER TO timetaskmanager;
 
 --
 -- TOC entry 184 (class 1259 OID 16453)
@@ -114,7 +114,7 @@ CREATE SEQUENCE tasks_seq
     CACHE 1;
 
 
-ALTER TABLE tasks_seq OWNER TO timetaskmanager1;
+ALTER TABLE tasks_seq OWNER TO timetaskmanager;
 
 --
 -- TOC entry 182 (class 1259 OID 16397)
@@ -129,7 +129,7 @@ CREATE TABLE users (
 );
 
 
-ALTER TABLE users OWNER TO timetaskmanager1;
+ALTER TABLE users OWNER TO timetaskmanager;
 
 --
 -- TOC entry 181 (class 1259 OID 16395)
@@ -144,7 +144,7 @@ CREATE SEQUENCE users_seq
     CACHE 1;
 
 
-ALTER TABLE users_seq OWNER TO timetaskmanager1;
+ALTER TABLE users_seq OWNER TO timetaskmanager;
 
 --
 -- TOC entry 2000 (class 2606 OID 16442)

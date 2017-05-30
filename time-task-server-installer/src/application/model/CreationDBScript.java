@@ -2,30 +2,23 @@ package application.model;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by diman on 17.05.2017.
  */
 public class CreationDBScript {
 
-//    private final String PATH_TO_SCRIPT = "d:\\MyDevelopment\\JavaCourse\\TTMServerInstaller\\out\\production\\TTMServerInstaller\\application\\resources\\";
-    private final String PATH_TO_SCRIPT = "out\\production\\TTMServerInstaller\\application\\resources\\";
-
     private String userScript = null;
     private String databaseScript = null;
     private String tablesScript = null;
 
-    private List<String> userJDBCStatement = null;
-    private List<String> databaseJDBCStatement = null;
-    private List<String> tablesJDBCStatement = null;
+//    private List<String> userJDBCStatement = null;
+//    private List<String> databaseJDBCStatement = null;
+//    private List<String> tablesJDBCStatement = null;
+//
+//    private boolean isReady = false;
 
-    private boolean isReady = false;
-
-    public String getUser() {
+    public String getUserScript() {
         return userScript;
     }
 
@@ -49,21 +42,21 @@ public class CreationDBScript {
         this.tablesScript = tablesScript;
     }
 
-    public List<String> getUserJDBCStatement() {
-        return userJDBCStatement;
-    }
+//    public List<String> getUserJDBCStatement() {
+//        return userJDBCStatement;
+//    }
+//
+//    public List<String> getDatabaseJDBCStatement() {
+//        return databaseJDBCStatement;
+//    }
+//
+//    public List<String> getTablesJDBCStatement() {
+//        return tablesJDBCStatement;
+//    }
 
-    public List<String> getDatabaseJDBCStatement() {
-        return databaseJDBCStatement;
-    }
-
-    public List<String> getTablesJDBCStatement() {
-        return tablesJDBCStatement;
-    }
-
-    public boolean isReady() {
-        return isReady;
-    }
+//    public boolean isReady() {
+//        return isReady;
+//    }
 
 //    @Override
 //    public String toString() {
@@ -84,49 +77,49 @@ public class CreationDBScript {
 //        initScript(scriptSuffixFileName);
 //    }
 
-    private void makeAllJDBCStatements() {
+//    private void makeAllJDBCStatements() {
+//
+//        userJDBCStatement = new ArrayList<String>();
+//        parseStringToJDBCStatements(userScript, userJDBCStatement);
+//
+//        databaseJDBCStatement = new ArrayList<String>();
+//        parseStringToJDBCStatements(databaseScript, databaseJDBCStatement);
+//
+//        tablesJDBCStatement = new ArrayList<String>();
+//        parseStringToJDBCStatements(tablesScript, tablesJDBCStatement);
+//
+//        isReady = true;
+//    }
+//
+//
+//    private void parseStringToJDBCStatements(String sourceString, List<String> userScript) {
+//
+//        StringReader in = new StringReader(sourceString);
+//
+//        Scanner s = new Scanner(in);
+////        s.useDelimiter("(;(\r)?\n)|((\r)?\n)?(--)?.*(--(\r)?\n)");
+//        s.useDelimiter("(;(\r)?\n)|(--\n)");
+//        while (s.hasNext())
+//        {
+//            String line = s.next();
+//            if (line.startsWith("/*!") && line.endsWith("*/"))
+//            {
+//                int i = line.indexOf(' ');
+//                line = line.substring(i + 1, line.length() - " */".length());
+//            }
+//
+//            if (!line.startsWith("--") && !line.startsWith("\n--") && line.trim().length() > 0)
+//            {
+//                userScript.add(line);
+//            }
+//        }
+//        s.close();
+//
+//    }
 
-        userJDBCStatement = new ArrayList<String>();
-        parseStringToJDBCStatements(userScript, userJDBCStatement);
+    public void readScriptFiles(String scriptSuffixFileName) {
 
-        databaseJDBCStatement = new ArrayList<String>();
-        parseStringToJDBCStatements(databaseScript, databaseJDBCStatement);
-
-        tablesJDBCStatement = new ArrayList<String>();
-        parseStringToJDBCStatements(tablesScript, tablesJDBCStatement);
-
-        isReady = true;
-    }
-
-
-    private void parseStringToJDBCStatements(String sourceString, List<String> userScript) {
-
-        StringReader in = new StringReader(sourceString);
-
-        Scanner s = new Scanner(in);
-//        s.useDelimiter("(;(\r)?\n)|((\r)?\n)?(--)?.*(--(\r)?\n)");
-        s.useDelimiter("(;(\r)?\n)|(--\n)");
-        while (s.hasNext())
-        {
-            String line = s.next();
-            if (line.startsWith("/*!") && line.endsWith("*/"))
-            {
-                int i = line.indexOf(' ');
-                line = line.substring(i + 1, line.length() - " */".length());
-            }
-
-            if (!line.startsWith("--") && !line.startsWith("\n--") && line.trim().length() > 0)
-            {
-                userScript.add(line);
-            }
-        }
-        s.close();
-
-    }
-
-    private void readScriptFiles(String scriptSuffixFileName) {
-
-        try (FileInputStream fileUserScript = new FileInputStream(PATH_TO_SCRIPT + "userScript" + scriptSuffixFileName)) {
+        try (FileInputStream fileUserScript = new FileInputStream(InstallationInfo.PATH_TO_RESOURCES + "userScript" + scriptSuffixFileName)) {
 
             userScript = readFileToString(fileUserScript);
 
@@ -134,7 +127,7 @@ public class CreationDBScript {
             e.printStackTrace();
         }
 
-        try (FileInputStream fileDatabaseScript = new FileInputStream(PATH_TO_SCRIPT + "databaseScript" + scriptSuffixFileName)) {
+        try (FileInputStream fileDatabaseScript = new FileInputStream(InstallationInfo.PATH_TO_RESOURCES + "databaseScript" + scriptSuffixFileName)) {
 
             databaseScript = readFileToString(fileDatabaseScript);
 
@@ -142,7 +135,7 @@ public class CreationDBScript {
             e.printStackTrace();
         }
 
-        try (FileInputStream fileTablesScript = new FileInputStream(PATH_TO_SCRIPT + "tablesScript" + scriptSuffixFileName)) {
+        try (FileInputStream fileTablesScript = new FileInputStream(InstallationInfo.PATH_TO_RESOURCES + "tablesScript" + scriptSuffixFileName)) {
 
             tablesScript = readFileToString(fileTablesScript);
 
@@ -150,7 +143,7 @@ public class CreationDBScript {
             e.printStackTrace();
         }
 
-        isReady = true;
+//        isReady = true;
     }
 
     private String readFileToString(FileInputStream fileScript) throws IOException {

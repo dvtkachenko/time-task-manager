@@ -1,9 +1,9 @@
-CREATE USER timetaskmanager WITH
+CREATE USER timetaskmanager1 WITH
   LOGIN
   NOSUPERUSER
   INHERIT
   CREATEDB
   NOCREATEROLE
   NOREPLICATION
-  WITH password '12345';
-  COMMENT ON ROLE timetaskmanager IS 'user for mainacad project';
+  PASSWORD '12345';
+  COMMENT ON ROLE timetaskmanager1 IS 'user for mainacad project';

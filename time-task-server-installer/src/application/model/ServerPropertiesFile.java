@@ -8,6 +8,7 @@ import java.util.List;
  *
  * This class consists information about server's properties.
  * It is needed for server application and it is saved in installation directory
+ *
  */
 
 public class ServerPropertiesFile {

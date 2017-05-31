@@ -93,7 +93,7 @@ public class ViewController {
     private TextField textInputUsername;
 
     @FXML
-    private TextField textInputPassword;
+    private PasswordField textInputPassword;
 
     @FXML
     private TextArea textAreaCreateUserScript;

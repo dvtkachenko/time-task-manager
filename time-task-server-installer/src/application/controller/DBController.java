@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Locale;
 
+import static application.controller.MainController.ERROR_DB_SCRIPT;
+
 /**
  * Created by diman on 26.04.2017.
  *
@@ -31,7 +33,7 @@ public class DBController {
         return DriverManager.getConnection(connectionInfo.getDbFullPathConnection(), connectionInfo.getUserName(),connectionInfo.getUserPassword());
     }
 
-    public void doCreationScript(Connection conn, String script) {
+    public void doCreationScript(Connection conn, String script) throws Exception {
 
         Statement currentStatement = null;
             try {
@@ -40,6 +42,8 @@ public class DBController {
                 currentStatement.execute(script);
             } catch (SQLException e) {
                 e.printStackTrace();
+                throw new Exception(ERROR_DB_SCRIPT);
+
             } finally {
                 // Release resources
                 if (currentStatement != null) {
@@ -47,10 +51,11 @@ public class DBController {
                         currentStatement.close();
                     } catch (SQLException e) {
                         e.printStackTrace();
+                        throw new Exception(ERROR_DB_SCRIPT);
                     }
                 }
-                currentStatement = null;
-        }
+            }
+        currentStatement = null;
     }
 
     public static void main(String[] args) {

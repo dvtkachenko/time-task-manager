@@ -2,9 +2,7 @@ package application.model;
 
 /**
  * Created by diman on 17.05.2017.
- */
-
-/**
+ *
  *  This class consists all information about installation process.
  *
  */
@@ -42,8 +40,7 @@ public class InstallationInfo {
 //    private String serverAddress = null;
     private String serverAddress = "178.62.247.230";
 
-//    private String serverPort = null;
-    private String serverPort = "5432";
+    private String serverPort = null;
 
     private boolean launchServer = true;
 
@@ -166,6 +163,7 @@ public class InstallationInfo {
     public void initInstallationInfoFromFile() {
         dbConnectionInfo = new DBConnectionInfo(selectedRDBMS);
         selectedRDBMSName = dbConnectionInfo.getRdbmsName();
+        serverPort = dbConnectionInfo.getDbDefaultPort();
         ttmUserName = dbConnectionInfo.getUserName();
         ttmUserPassword = dbConnectionInfo.getUserPassword();
         creationDBScript = new CreationDBScript();

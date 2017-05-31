@@ -23,6 +23,7 @@ public class DBConnectionInfo {
     private String scriptSuffixFileName = null;
     private String dbDriver = null;
     private String dbConnectionPrefix = null;
+    private String dbDefaultPort = null;
     private String dbFullPathConnection = null;
     private String databaseName = null;
     private String userName = null;
@@ -47,6 +48,7 @@ public class DBConnectionInfo {
             scriptSuffixFileName = property.getProperty(keyPrefix + "script_suffix_filename");
             dbDriver = property.getProperty(keyPrefix + "db_driver");
             dbConnectionPrefix = property.getProperty(keyPrefix + "db_connection_prefix");
+            dbDefaultPort = property.getProperty(keyPrefix + "db_default_port");
             databaseName = property.getProperty("database_name");
             userName = property.getProperty("user_name");
             userPassword = property.getProperty("user_password");
@@ -71,6 +73,10 @@ public class DBConnectionInfo {
 
     public String getDbConnectionPrefix() {
         return dbConnectionPrefix;
+    }
+
+    public String getDbDefaultPort() {
+        return dbDefaultPort;
     }
 
     public String getDbFullPathConnection() {

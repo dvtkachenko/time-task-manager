@@ -2,28 +2,22 @@
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Май 05 2017 г., 22:13
--- Версия сервера: 5.7.18-0ubuntu0.16.04.1
--- Версия PHP: 7.0.15-0ubuntu0.16.04.4
+-- РҐРѕСЃС‚: localhost
+-- Р’СЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ: РњР°Р№ 05 2017 Рі., 22:13
+-- Р’РµСЂСЃРёСЏ СЃРµСЂРІРµСЂР°: 5.7.18-0ubuntu0.16.04.1
+-- Р’РµСЂСЃРёСЏ PHP: 7.0.15-0ubuntu0.16.04.4
 
-SET FOREIGN_KEY_CHECKS=0;
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+-- SET FOREIGN_KEY_CHECKS=0;
+-- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- SET AUTOCOMMIT = 0;
+-- START TRANSACTION;
+-- SET time_zone = "+00:00";
 
---
--- База данных: `timetaskmanager`
---
-
-CREATE DATABASE IF NOT EXISTS `timetaskmanager` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `timetaskmanager`;
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `tasks`
+-- РЎС‚СЂСѓРєС‚СѓСЂР° С‚Р°Р±Р»РёС†С‹ `tasks`
 --
 
 CREATE TABLE `tasks` (
@@ -40,17 +34,17 @@ CREATE TABLE `tasks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `tasks`
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ `tasks`
 -- This is the data for the correct operation of the program
 --
 
-INSERT INTO `tasks` (`id`, `userid`, `taskname`, `parenttaskid`, `creationtime`, `finishtime`, `suggestedtaskduration`, `elapsedtaskduration`, `finished`,'comments') VALUES
+INSERT INTO tasks (id, userid, taskname, parenttaskid, creationtime, finishtime, suggestedtaskduration, elapsedtaskduration, finished,comments) VALUES
 (-1, -1, 'zero task', NULL, '0', '0', '0', '0', 'true', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- РЎС‚СЂСѓРєС‚СѓСЂР° С‚Р°Р±Р»РёС†С‹ `users`
 --
 
 CREATE TABLE `users` (
@@ -61,19 +55,19 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `users`
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ `users`
 -- This is the data for the correct operation of the program
 --
 
-INSERT INTO `users` (`id`, `login`, `password`, `tasklistversion`) VALUES
+INSERT INTO users (id, login, password, tasklistversion) VALUES
 (-1, 'zerouser', 'zerouser', '0');
 
 --
--- Индексы сохранённых таблиц
+-- РРЅРґРµРєСЃС‹ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… С‚Р°Р±Р»РёС†
 --
 
 --
--- Индексы таблицы `tasks`
+-- РРЅРґРµРєСЃС‹ С‚Р°Р±Р»РёС†С‹ `tasks`
 --
 ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`),
@@ -81,35 +75,36 @@ ALTER TABLE `tasks`
   ADD KEY `parenttaskid` (`parenttaskid`);
 
 --
--- Индексы таблицы `users`
+-- РРЅРґРµРєСЃС‹ С‚Р°Р±Р»РёС†С‹ `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_login_key` (`login`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT РґР»СЏ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… С‚Р°Р±Р»РёС†
 --
 
 --
--- AUTO_INCREMENT для таблицы `tasks`
+-- AUTO_INCREMENT РґР»СЏ С‚Р°Р±Р»РёС†С‹ `tasks`
 --
 ALTER TABLE `tasks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT РґР»СЏ С‚Р°Р±Р»РёС†С‹ `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- РћРіСЂР°РЅРёС‡РµРЅРёСЏ РІРЅРµС€РЅРµРіРѕ РєР»СЋС‡Р° СЃРѕС…СЂР°РЅРµРЅРЅС‹С… С‚Р°Р±Р»РёС†
 --
 
 --
--- Ограничения внешнего ключа таблицы `tasks`
+-- РћРіСЂР°РЅРёС‡РµРЅРёСЏ РІРЅРµС€РЅРµРіРѕ РєР»СЋС‡Р° С‚Р°Р±Р»РёС†С‹ `tasks`
 --
 ALTER TABLE `tasks`
   ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `tasks_ibfk_2` FOREIGN KEY (`parenttaskid`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS=1;
-COMMIT;
+
+-- COMMIT;

@@ -25,13 +25,15 @@ import static javafx.application.Platform.exit;
 
 public class MainController {
 
-    final static String ERROR_HEADER = "Something must have gone wrong. ";
-    final static String ERROR_INSTALLATION_INTERRUPTED = "The installation has interrupted !";
+    public final static String ERROR_HEADER = "Something must have gone wrong. ";
+    public final static String ERROR_INSTALLATION_INTERRUPTED = "The installation has interrupted !";
 
-    final static String ERROR_DB_USER = "User could not be created !";
-    final static String ERROR_DB_DATABASE = "User could not be created !";
-    final static String ERROR_DB_TABLES = "User could not be created !";
-//    final static String ERROR_ANOTHER = "User could not be created !";
+    public final static String ERROR_DB_USER = "User could not be created !";
+    public final static String ERROR_DB_DATABASE = "User could not be created !";
+    public final static String ERROR_DB_TABLES = "User could not be created !";
+    public final static String ERROR_RUN_SERVER = "Server could not be started !";
+    public final static String ERROR_DB_SCRIPT = "Database script could not be performed !";
+
 
 //    private static MainController instance = new MainController();
 //    private ServerInstaller serverInstaller;
@@ -74,6 +76,52 @@ public class MainController {
 
     private void createMySQLDB() throws Exception {
 
+        getDbConnectionInfo().setDbFullPathConnection(getDbConnectionInfo().getDbConnectionPrefix() + "//" +
+                installationInfo.getServerAddress() + ":" + installationInfo.getServerPort());
+
+        if (installationInfo.isCreateUserAuto()) {
+
+            getDbConnectionInfo().setUserName(installationInfo.getAdminRDBMSUsername());
+            getDbConnectionInfo().setUserPassword(installationInfo.getAdminRDBMSPassword());
+
+            try (Connection dbConnection = dbController.openConnection(getDbConnectionInfo())) {
+
+                dbController.doCreationScript(dbConnection, installationInfo.getCreationDBScript().getUserScript());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new Exception(ERROR_DB_USER);
+            }
+        }
+
+        getDbConnectionInfo().setUserName(installationInfo.getTtmUserName());
+        getDbConnectionInfo().setUserPassword(installationInfo.getTtmUserPassword());
+
+        try (Connection dbConnection = dbController.openConnection(getDbConnectionInfo())) {
+
+            dbController.doCreationScript(dbConnection, installationInfo.getCreationDBScript().getDatabaseScript());
+
+        } catch (Exception e) {
+//                e.printStackTrace();
+            throw new Exception(ERROR_DB_DATABASE);
+        }
+
+        getDbConnectionInfo().setDbFullPathConnection(getDbConnectionInfo().getDbConnectionPrefix() + "//" +
+                installationInfo.getServerAddress() + ":" + installationInfo.getServerPort() + "/" +
+                installationInfo.getDbConnectionInfo().getDatabaseName());
+
+        getDbConnectionInfo().setUserName(installationInfo.getTtmUserName());
+        getDbConnectionInfo().setUserPassword(installationInfo.getTtmUserPassword());
+
+        try (Connection dbConnection = dbController.openConnection(getDbConnectionInfo())) {
+
+            dbController.doCreationScript(dbConnection, installationInfo.getCreationDBScript().getTablesScript());
+
+        } catch (Exception e) {
+//                e.printStackTrace();
+            throw new Exception(ERROR_DB_TABLES);
+        }
+
     }
 
     private void createPostgreSQLDB() throws Exception {
@@ -109,7 +157,8 @@ public class MainController {
         }
 
         getDbConnectionInfo().setDbFullPathConnection(getDbConnectionInfo().getDbConnectionPrefix() + "//" +
-                installationInfo.getServerAddress() + ":" + installationInfo.getServerPort() + "/timetaskmanager3");
+                installationInfo.getServerAddress() + ":" + installationInfo.getServerPort() + "//" +
+                installationInfo.getDbConnectionInfo().getDatabaseName());
 
         getDbConnectionInfo().setUserName(installationInfo.getTtmUserName());
         getDbConnectionInfo().setUserPassword(installationInfo.getTtmUserPassword());
@@ -126,6 +175,52 @@ public class MainController {
     }
 
     private void createOracleDB() throws Exception {
+
+        getDbConnectionInfo().setDbFullPathConnection(getDbConnectionInfo().getDbConnectionPrefix());
+
+        if (installationInfo.isCreateUserAuto()) {
+
+            getDbConnectionInfo().setUserName(installationInfo.getAdminRDBMSUsername());
+            getDbConnectionInfo().setUserPassword(installationInfo.getAdminRDBMSPassword());
+
+            try (Connection dbConnection = dbController.openConnection(getDbConnectionInfo())) {
+
+                dbController.doCreationScript(dbConnection, installationInfo.getCreationDBScript().getUserScript());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new Exception(ERROR_DB_USER);
+            }
+        }
+
+        getDbConnectionInfo().setUserName(installationInfo.getTtmUserName());
+        getDbConnectionInfo().setUserPassword(installationInfo.getTtmUserPassword());
+
+        try (Connection dbConnection = dbController.openConnection(getDbConnectionInfo())) {
+
+//            dbController.doCreationScript(dbConnection, installationInfo.getCreationDBScript().getDatabaseScript());
+            dbController.doCreationScript(dbConnection, installationInfo.getCreationDBScript().getTablesScript());
+
+        } catch (Exception e) {
+//                e.printStackTrace();
+            throw new Exception(ERROR_DB_DATABASE);
+        }
+
+//        getDbConnectionInfo().setDbFullPathConnection(getDbConnectionInfo().getDbConnectionPrefix() + "//" +
+//                installationInfo.getServerAddress() + ":" + installationInfo.getServerPort() + "/" +
+//                installationInfo.getDbConnectionInfo().getDatabaseName());
+//
+//        getDbConnectionInfo().setUserName(installationInfo.getTtmUserName());
+//        getDbConnectionInfo().setUserPassword(installationInfo.getTtmUserPassword());
+//
+//        try (Connection dbConnection = dbController.openConnection(getDbConnectionInfo())) {
+//
+//            dbController.doCreationScript(dbConnection, installationInfo.getCreationDBScript().getTablesScript());
+//
+//        } catch (Exception e) {
+////                e.printStackTrace();
+//            throw new Exception(ERROR_DB_TABLES);
+//        }
 
     }
 
@@ -156,7 +251,12 @@ public class MainController {
 
     private void doSixthStep() {
 
-        if (installationInfo.getDbConnectionInfo() != null) {
+        if (installationInfo.getDbConnectionInfo() == null) {
+
+            viewController.showWarningDialog(ERROR_HEADER + "\n" + ERROR_INSTALLATION_INTERRUPTED);
+            exitFromInstaller();
+
+        } else {
 
             Locale defaultLocale = Locale.getDefault();
             Locale.setDefault(Locale.ENGLISH);
@@ -193,7 +293,7 @@ public class MainController {
 //                Runtime.getRuntime().exec("java -jar " + installationInfo.getInstallationPath() + "\\" + installationInfo.getServerAppFileName());
                 Runtime.getRuntime().exec(installationInfo.getServerAppFileName());
             } catch (IOException e) {
-                e.printStackTrace();
+                viewController.showWarningDialog(ERROR_HEADER + "\n" + ERROR_RUN_SERVER);
             }
         }
 
@@ -266,6 +366,12 @@ public class MainController {
 //                break;
         }
     }
+
+    /**
+     * This method checks user's input data
+     * @param activePane  it keeps current num active page
+     * @return
+     */
 
     public boolean checkInputData(int activePane) {
 

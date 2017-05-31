@@ -6,7 +6,13 @@ import application.view.ViewController;
 
 /**
  * Created by diman on 19.05.2017.
+ *
+ *  This is class synchronizes data of installation between application
+ *  model and view sections
+ *
  */
+
+
 public class ModelViewDataUpdater {
 
     private InstallationInfo installationInfo;
@@ -72,7 +78,7 @@ public class ModelViewDataUpdater {
 
     public void updateViewAutoCreatingUserCheckBox() {
 
-        // this peace of code should be placed in view controller
+        // this snippet of code should be placed in view controller
         // but i am lazy to do it right now
         viewController.setAllowAutoCreatingUserCheckBox(installationInfo.isCreateUserAuto());
         if (viewController.getAllowAutoCreatingUserCheckBox().isSelected()) {

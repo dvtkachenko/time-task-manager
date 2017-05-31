@@ -7,6 +7,12 @@ import java.util.Properties;
 /**
  * Created by diman on 18.05.2017.
  */
+
+/**
+ *  This class consists information about database connection for different RDBMS.
+ *
+ */
+
 public class DBConnectionInfo {
 
     public enum RDBMS {

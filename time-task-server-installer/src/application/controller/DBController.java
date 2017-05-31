@@ -12,6 +12,10 @@ import java.util.Locale;
 
 /**
  * Created by diman on 26.04.2017.
+ *
+ * This class is a database controller for this application
+ * It handles database connections
+ *
  */
 
 // before you run your project you should add "-Duser.language=en -Duser.region=us"
@@ -20,45 +24,13 @@ import java.util.Locale;
 
 public class DBController {
 
-//    private static DBController instance = new DBController();
-
-//    private DBController(){};
-
-//    public static DBController getInstance() {
-//        return instance;
-//    }
 
     public Connection openConnection(DBConnectionInfo connectionInfo) throws Exception {
 
         Class.forName(connectionInfo.getDbDriver());
         return DriverManager.getConnection(connectionInfo.getDbFullPathConnection(), connectionInfo.getUserName(),connectionInfo.getUserPassword());
     }
-/*
-    public void doCreationScript(Connection conn, String script) {
 
-        Statement currentStatement = null;
-        for (String stringSQL : script) {
-
-            try {
-                // Execute statement
-                currentStatement = conn.createStatement();
-                currentStatement.execute(stringSQL);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                // Release resources
-                if (currentStatement != null) {
-                    try {
-                        currentStatement.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-                currentStatement = null;
-            }
-        }
-    }
-*/
     public void doCreationScript(Connection conn, String script) {
 
         Statement currentStatement = null;

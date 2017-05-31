@@ -11,6 +11,15 @@ import javafx.stage.StageStyle;
 import java.io.File;
 import java.util.Optional;
 
+/**
+ * Created by diman on 19.05.2017.
+ *
+ * This class is a view controller for this application
+ * It keeps and handles view JavaFX fxml files
+ *
+ */
+
+
 public class ViewController {
 
     public final static int TOTAL_PANE = 7;

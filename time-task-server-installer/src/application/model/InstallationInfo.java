@@ -5,9 +5,10 @@ package application.model;
  */
 
 /**
- *  This class consists information about installation process.
+ *  This class consists all information about installation process.
  *
  */
+
 public class InstallationInfo {
 
     private DBConnectionInfo dbConnectionInfo;

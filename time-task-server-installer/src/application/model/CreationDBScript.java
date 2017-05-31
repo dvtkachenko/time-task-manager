@@ -6,6 +6,12 @@ import java.io.IOException;
 /**
  * Created by diman on 17.05.2017.
  */
+
+/**
+ *  This class performs reading databases scripts from files and keeps them in his variables.
+ *
+ */
+
 public class CreationDBScript {
 
     private String userScript = null;

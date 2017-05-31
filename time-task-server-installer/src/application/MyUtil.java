@@ -8,7 +8,11 @@ import java.util.List;
 
 /**
  * Created by diman on 18.05.2017.
+ *
+ * This is utils class
+ *
  */
+
 public class MyUtil {
 
     public static void copyFileFromTo(String pathFrom, String pathTo) {

@@ -6,7 +6,11 @@ import static application.view.ViewController.TOTAL_PANE;
 
 /**
  * Created by diman on 12.05.2017.
+ *
+ *  This is class that handles all view panes
+ *
  */
+
 public class PanesContainer {
 
     private int indexActivePane = 0;

@@ -24,6 +24,8 @@ public class InstallationInfo {
 //    private String serverAppFileName = "TTMServer.jar";
     private String serverAppFileName = "time-task-server.exe";
 
+    private String clientAppFileName = "time-task-client.exe";
+
     private DBConnectionInfo.RDBMS selectedRDBMS = DBConnectionInfo.RDBMS.PostgreSQL;
 
     private boolean createUserAuto = true;
@@ -38,8 +40,8 @@ public class InstallationInfo {
 
     private String ttmUserPassword = null;
 
-//    private String serverAddress = null;
-    private String serverAddress = "178.62.247.230";
+    private String serverAddress = null;
+//    private String serverAddress = "178.62.247.230";
 
     private String serverPort = null;
 
@@ -81,7 +83,11 @@ public class InstallationInfo {
         return serverAppFileName;
     }
 
-    public void setInstallationPath(String installationPath) {
+    public String getClientAppFileName() {
+		return clientAppFileName;
+	}
+
+	public void setInstallationPath(String installationPath) {
         this.installationPath = installationPath;
     }
 
@@ -164,6 +170,7 @@ public class InstallationInfo {
     public void initInstallationInfoFromFile() throws Exception {
         dbConnectionInfo = new DBConnectionInfo(selectedRDBMS);
         selectedRDBMSName = dbConnectionInfo.getRdbmsName();
+        serverAddress = dbConnectionInfo.getDbDefaultIP();
         serverPort = dbConnectionInfo.getDbDefaultPort();
         ttmUserName = dbConnectionInfo.getUserName();
         ttmUserPassword = dbConnectionInfo.getUserPassword();

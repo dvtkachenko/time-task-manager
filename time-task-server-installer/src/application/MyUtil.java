@@ -23,16 +23,16 @@ public class MyUtil {
     	// i do not use buffered reading and saving 
     	// just for demonstrate how installation progress bar works :)
     	//
-//    	BufferedInputStream inFile = null;
-//    	BufferedOutputStream outFile = null;
-        FileInputStream inFile = null;
-        FileOutputStream outFile = null;
+    	BufferedInputStream inFile = null;
+    	BufferedOutputStream outFile = null;
+//        FileInputStream inFile = null;
+//        FileOutputStream outFile = null;
 
             try  {
-//                inFile = new BufferedInputStream(new FileInputStream(pathFrom));
-//                outFile = new BufferedOutputStream(new FileOutputStream(pathTo));
-                inFile = new FileInputStream(pathFrom);
-                outFile = new FileOutputStream(pathTo);
+                inFile = new BufferedInputStream(new FileInputStream(pathFrom));
+                outFile = new BufferedOutputStream(new FileOutputStream(pathTo));
+//                inFile = new FileInputStream(pathFrom);
+//                outFile = new FileOutputStream(pathTo);
 
                 int c;
 

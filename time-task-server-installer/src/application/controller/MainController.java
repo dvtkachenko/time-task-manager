@@ -179,7 +179,7 @@ public class MainController {
         }
 
         getDbConnectionInfo().setDbFullPathConnection(getDbConnectionInfo().getDbConnectionPrefix() + "//" +
-                installationInfo.getServerAddress() + ":" + installationInfo.getServerPort() + "//" +
+                installationInfo.getServerAddress() + ":" + installationInfo.getServerPort() + "/" +
                 installationInfo.getDbConnectionInfo().getDatabaseName());
 
         getDbConnectionInfo().setUserName(installationInfo.getTtmUserName());
@@ -250,9 +250,14 @@ public class MainController {
     // it is called from Thread
     public void doSecondStep() throws Exception{
 
+    	// copy server application file to destination folder
         MyUtil.copyFileFromTo(new File("").getAbsolutePath() + "\\resources\\" + installationInfo.getServerAppFileName(),
                 installationInfo.getInstallationPath()+ "\\" + installationInfo.getServerAppFileName());
 
+    	// copy client application file to destination folder
+        MyUtil.copyFileFromTo(new File("").getAbsolutePath() + "\\resources\\" + installationInfo.getClientAppFileName(),
+                installationInfo.getInstallationPath()+ "\\" + installationInfo.getClientAppFileName());
+        
       // just for test abnormal installation process termination
 //        viewController.showWarningDialog(new File("").getAbsolutePath());
 //        viewController.showWarningDialog(ERROR_HEADER + ERROR_DB_USER + "\n" + ERROR_INSTALLATION_INTERRUPTED);
@@ -326,11 +331,13 @@ public class MainController {
 //                Runtime.getRuntime().exec("java -jar " + new File("").getAbsolutePath()  + "\\resources\\" + installationInfo.getServerAppFileName());
 //                Runtime.getRuntime().exec(new File("").getAbsolutePath()  + "\\resources\\" + installationInfo.getServerAppFileName());
                 Runtime.getRuntime().exec(installationInfo.getInstallationPath()  + "\\" + installationInfo.getServerAppFileName());
+                Runtime.getRuntime().exec(installationInfo.getInstallationPath()  + "\\" + installationInfo.getClientAppFileName());
             } catch (IOException e) {
                 viewController.showWarningDialog(ERROR_HEADER + "\n" + ERROR_RUN_SERVER);
             }
         }
 
+        exitFromInstaller();
         exitFromInstaller();
     }
 
@@ -364,24 +371,26 @@ public class MainController {
 				Thread do2Step = new Thread(new Task() {
 					@Override
 					protected Void call() {
-	
+						
 						try {
 							doSecondStep();
 							Platform.runLater(() -> {
+								viewController.hideInstallationProgressPage();
 								viewController.setBackButtonDisable(true);
 								viewController.setActivePage(viewController.getActivePage() + 1);
 							});
 						} catch (Exception e) {
 							Platform.runLater(() -> {
+								viewController.hideInstallationProgressPage();
 								viewController.showWarningDialog(
 										ERROR_HEADER + "\n" + e.getMessage() + "\n" + "Please fix this trouble !");
 							});
 						}
-						viewController.hideInstallationProgressPage();
 	
 						return null;
 					}
 				});
+				
 				do2Step.setDaemon(true);
 				do2Step.start();
 	
@@ -418,6 +427,7 @@ public class MainController {
 						try {
 							doSixthStep();
 							Platform.runLater(() -> {
+								viewController.hideInstallationProgressPage();
 								viewController.setNextButtonText("Finish");
 								viewController.setCancelButtonMode(false);
 								viewController.setActivePage(activePane + 1);
@@ -425,6 +435,7 @@ public class MainController {
 							});
 						} catch (ExitFromInstallerException e) {
 							Platform.runLater(() -> {
+								viewController.hideInstallationProgressPage();
 								viewController.showWarningDialog(
 										ERROR_HEADER + e.getMessage() + "\n" + "Please fix this trouble !");
 								// i had created this part of code and i realised
@@ -436,11 +447,11 @@ public class MainController {
 	
 						} catch (Exception e) {
 							Platform.runLater(() -> {
+								viewController.hideInstallationProgressPage();
 								viewController.showWarningDialog(
 										ERROR_HEADER + e.getMessage() + "\n" + "Please enter correct information !");
 							});
 						}
-						viewController.hideInstallationProgressPage();
 	
 						return null;
 					}
@@ -460,7 +471,6 @@ public class MainController {
 
     }
 
-//    public void doBackStep(int activePane) {
     public void doBackStep() {
 
         int activePane = viewController.getActivePage();

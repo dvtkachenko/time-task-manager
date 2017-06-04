@@ -244,7 +244,7 @@
                            </image>
                         </ImageView>
                         <Text layoutX="237.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulation ! Time Task Manager server application has just been successfully installed." wrappingWidth="297.3916015625" />
-                        <CheckBox fx:id="launchCheckBox" layoutX="237.0" layoutY="154.0" mnemonicParsing="false" selected="true" text="Launch Time Task Manager Server" />
+                        <CheckBox fx:id="launchCheckBox" layoutX="237.0" layoutY="154.0" mnemonicParsing="false" selected="true" text="Launch Time Task Manager application" />
                      </children>
                   </Pane>
                   <Pane fx:id="installationProgressPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">

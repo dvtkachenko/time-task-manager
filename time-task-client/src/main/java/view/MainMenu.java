@@ -7,9 +7,9 @@ import javafx.stage.Stage;
 import model.MainModel;
 
 public class MainMenu {
+    private static User user;
     private static Stage primaryStage;
     private static Scene mainScene;
-    private static User user;
     private MainModel mainModel;
     private MainController mainController;
 
@@ -22,6 +22,7 @@ public class MainMenu {
         mainController.editTask();
         mainController.removeTask();
         mainController.completeTask();
+        mainController.addStatistics();
         mainController.setTasksElapsedTime();
         mainController.setTasksSuggestedTime();
 

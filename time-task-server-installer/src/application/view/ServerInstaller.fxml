@@ -5,6 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
@@ -23,7 +24,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Pane fx:id="firstStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">
+                  <Pane fx:id="firstStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0">
                      <children>
                         <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -54,7 +55,7 @@
                            </image>
                         </ImageView>
                         <Text layoutX="237.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter installation folder" wrappingWidth="297.3916015625" />
-                        <TextField fx:id="textInputInstallationPath" layoutX="237.0" layoutY="108.0" onKeyTyped="#textInputInstallationPathChanged" prefHeight="31.0" prefWidth="258.0" text="C:\Program Files\TTMServer" />
+                        <TextField fx:id="textInputInstallationPath" layoutX="237.0" layoutY="108.0" prefHeight="31.0" prefWidth="258.0" text="C:\Program Files\TTMServer" />
                         <Button layoutX="502.0" layoutY="108.0" mnemonicParsing="false" onAction="#handleOpenFileDialogButton" prefHeight="31.0" prefWidth="39.0" text="..." />
                      </children>
                   </Pane>
@@ -93,7 +94,7 @@
                            </image>
                         </ImageView>
                         <Text layoutX="237.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please create user 'TIMETASKMANAGER' in your RDBMS with grants which allow create tables. triggers, sequences. For example, the script is below." wrappingWidth="297.3916015625" />
-                        <TextArea fx:id="textAreaCreateUserScript" layoutX="237.0" layoutY="142.0" onKeyTyped="#textAreaCreateUserScriptTextChanged" prefHeight="100.0" prefWidth="322.0" text="CREATE USER TIMETASKMANAGER IDENTIFIED BY 12345;&#10;GRANT CREATE TABLE TO TIMETASKMANAGER;&#10;GRANT CREATE TRIGGER TO TIMETASKMANAGER;&#10;GRANT CREATE SEQUENCE TO TIMETASKMANAGER;&#10;GRANT CREATE SESSION TO TIMETASKMANAGER;" wrapText="true">
+                        <TextArea fx:id="textAreaCreateUserScript" layoutX="237.0" layoutY="142.0" prefHeight="100.0" prefWidth="322.0" text="CREATE USER TIMETASKMANAGER IDENTIFIED BY 12345;&#10;GRANT CREATE TABLE TO TIMETASKMANAGER;&#10;GRANT CREATE TRIGGER TO TIMETASKMANAGER;&#10;GRANT CREATE SEQUENCE TO TIMETASKMANAGER;&#10;GRANT CREATE SESSION TO TIMETASKMANAGER;" wrapText="true">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -168,7 +169,7 @@
                            <font>
                               <Font size="14.0" />
                            </font></Text>
-                        <TextArea fx:id="textAreaCreateDBTablesScript" layoutX="14.0" layoutY="176.0" onKeyTyped="#textAreaCreateDBTablesScriptTextChanged" prefHeight="142.0" prefWidth="548.0" text="--&#10;-- Структура таблицы `tasks`&#10;--&#10;&#10;CREATE TABLE `tasks` (&#10;  `id` int(11) NOT NULL,&#10;  `userid` int(11) NOT NULL,&#10;  `taskname` varchar(255) NOT NULL,&#10;  `parenttaskid` int(11) DEFAULT NULL,&#10;  `creationtime` varchar(255) NOT NULL,&#10;  `finishtime` varchar(255) DEFAULT NULL,&#10;  `suggestedtaskduration` varchar(255) NOT NULL,&#10;  `elapsedtaskduration` varchar(255) NOT NULL,&#10;  `finished` varchar(5) NOT NULL,&#10;  `comments` varchar(255) DEFAULT NULL&#10;) ENGINE=InnoDB DEFAULT CHARSET=latin1;" wrapText="true">
+                        <TextArea fx:id="textAreaCreateDBTablesScript" layoutX="14.0" layoutY="176.0" prefHeight="142.0" prefWidth="548.0" text="--&#10;-- Структура таблицы `tasks`&#10;--&#10;&#10;CREATE TABLE `tasks` (&#10;  `id` int(11) NOT NULL,&#10;  `userid` int(11) NOT NULL,&#10;  `taskname` varchar(255) NOT NULL,&#10;  `parenttaskid` int(11) DEFAULT NULL,&#10;  `creationtime` varchar(255) NOT NULL,&#10;  `finishtime` varchar(255) DEFAULT NULL,&#10;  `suggestedtaskduration` varchar(255) NOT NULL,&#10;  `elapsedtaskduration` varchar(255) NOT NULL,&#10;  `finished` varchar(5) NOT NULL,&#10;  `comments` varchar(255) DEFAULT NULL&#10;) ENGINE=InnoDB DEFAULT CHARSET=latin1;" wrapText="true">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -213,7 +214,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="textAreaCreateDBScript" layoutX="14.0" layoutY="111.0" onKeyTyped="#textAreaCreateDBScriptTextChanged" prefHeight="40.0" prefWidth="548.0" text="CREATE DATABASE IF NOT EXISTS `timetaskmanager` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;&#10;USE `timetaskmanager`;&#10;" wrapText="true">
+                        <TextArea fx:id="textAreaCreateDBScript" layoutX="14.0" layoutY="111.0" prefHeight="40.0" prefWidth="548.0" text="CREATE DATABASE IF NOT EXISTS `timetaskmanager` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;&#10;USE `timetaskmanager`;&#10;" wrapText="true">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -230,7 +231,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="seventhStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0">
+                  <Pane fx:id="seventhStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">
                      <children>
                         <Text fill="NAVY" layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Task Manager Server Installer" textAlignment="CENTER" wrappingWidth="540.3916015625">
                            <font>
@@ -244,6 +245,21 @@
                         </ImageView>
                         <Text layoutX="237.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulation ! Time Task Manager server application has just been successfully installed." wrappingWidth="297.3916015625" />
                         <CheckBox fx:id="launchCheckBox" layoutX="237.0" layoutY="154.0" mnemonicParsing="false" selected="true" text="Launch Time Task Manager Server" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="installationProgressPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">
+                     <children>
+                        <Text fill="NAVY" layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Task Manager Server Installer" textAlignment="CENTER" wrappingWidth="540.3916015625">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ProgressBar disable="true" layoutX="27.0" layoutY="145.0" prefHeight="40.0" prefWidth="519.0" progress="0.0" visible="false" />
+                        <Label fx:id="labelProgressIndicator" layoutX="45.0" layoutY="112.0" prefHeight="21.0" prefWidth="432.0" text="Progress indicator ...">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>

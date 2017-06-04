@@ -29,7 +29,7 @@ public class DBConnectionInfo {
     private String userName = null;
     private String userPassword = null;
 
-    public DBConnectionInfo(DBConnectionInfo.RDBMS selectedRDBMS) {
+    public DBConnectionInfo(DBConnectionInfo.RDBMS selectedRDBMS) throws Exception {
 
         Properties property = new Properties();
 
@@ -53,8 +53,8 @@ public class DBConnectionInfo {
             userName = property.getProperty("user_name");
             userPassword = property.getProperty("user_password");
 
-        } catch (IOException e) {
-            System.err.println("Error : there isn't database.properties. " + e.getMessage());
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
 
     }

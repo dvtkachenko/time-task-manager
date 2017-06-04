@@ -31,7 +31,7 @@ public class LoginController {
 
                 if (responseMessage.getMessageType().equals(MessageType.FAIL_MESSAGE)) {
                     loginModel.getHint().setText("Already registered");
-                } else if (responseMessage.getMessageType().equals(MessageType.RESPONSE_MESSAGE)) {
+                } else if (responseMessage.getMessageType().equals(MessageType.CREATE_SUCCESS_MESSAGE)) {
                     loginModel.getHint().setId("success");
                     loginModel.getHint().setText("Successfully registered");
                     MainMenu mainMenu = new MainMenu();
@@ -59,7 +59,7 @@ public class LoginController {
 
                 if (responseMessage.getMessageType().equals(MessageType.FAIL_MESSAGE)) {
                     loginModel.getHint().setText("Wrong username or password");
-                } else if (responseMessage.getMessageType().equals(MessageType.RESPONSE_MESSAGE)) {
+                } else if (responseMessage.getMessageType().equals(MessageType.LOGIN_SUCCESS_MESSAGE)) {
                     loginModel.getHint().setId("success");
                     loginModel.getHint().setText("Logged in successfully");
                     MainMenu mainMenu = new MainMenu();

@@ -15,13 +15,14 @@ public class InstallationInfo {
     private boolean disableEditScripts = true;
 
     //    private final String PATH_TO_SCRIPT = "d:\\MyDevelopment\\JavaCourse\\TTMServerInstaller\\out\\production\\TTMServerInstaller\\application\\resources\\";
-    public static final String PATH_TO_RESOURCES = "out\\production\\TTMServerInstaller\\application\\resources\\";
+    public static final String PATH_TO_RESOURCES = "resources\\";
 
 //    private int stepInstallation = 0;
 
     // default value can be changed by user during installation process
     private String installationPath = "D:\\Temp\\TTMServer";
-    private String serverAppFileName = "notepad.exe";
+//    private String serverAppFileName = "TTMServer.jar";
+    private String serverAppFileName = "time-task-server.exe";
 
     private DBConnectionInfo.RDBMS selectedRDBMS = DBConnectionInfo.RDBMS.PostgreSQL;
 
@@ -160,7 +161,7 @@ public class InstallationInfo {
         this.launchServer = launchServer;
     }
 
-    public void initInstallationInfoFromFile() {
+    public void initInstallationInfoFromFile() throws Exception {
         dbConnectionInfo = new DBConnectionInfo(selectedRDBMS);
         selectedRDBMSName = dbConnectionInfo.getRdbmsName();
         serverPort = dbConnectionInfo.getDbDefaultPort();

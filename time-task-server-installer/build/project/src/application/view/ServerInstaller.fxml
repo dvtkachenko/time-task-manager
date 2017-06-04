@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ViewController">
+   <children>
+      <SplitPane dividerPositions="0.8442211055276382" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Pane fx:id="firstStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@setup_picture.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text fill="NAVY" layoutX="248.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Time Task Manager Server Installer" wrappingWidth="297.3916015625">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="248.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This will install Time Task Manager Server on your computer." wrappingWidth="297.3916015625" />
+                        <Text layoutX="248.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click Next to continue, or Cancel to exit Setup." wrappingWidth="297.3916015625" />
+                        <Text fill="RED" layoutX="248.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Before installation you need to have already installed one of the next RDBMS : Oracle, PostgreSQL or MySQL, and also you need to have enough permission to create user in these RDBMS." wrappingWidth="297.3916015625" />
+                        <Text fill="RED" layoutX="248.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WARNING !" wrappingWidth="297.3916015625" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="secondStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">
+                     <children>
+                        <Text fill="NAVY" layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Task Manager Server Installer" textAlignment="CENTER" wrappingWidth="540.3916015625">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@setup_picture.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="237.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter installation folder" wrappingWidth="297.3916015625" />
+                        <TextField fx:id="textInputInstallationPath" layoutX="237.0" layoutY="108.0" prefHeight="31.0" prefWidth="258.0" text="C:\Program Files\TTMServer" />
+                        <Button layoutX="502.0" layoutY="108.0" mnemonicParsing="false" onAction="#handleOpenFileDialogButton" prefHeight="31.0" prefWidth="39.0" text="..." />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="thirdStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">
+                     <children>
+                        <Text fill="NAVY" layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Task Manager Server Installer" textAlignment="CENTER" wrappingWidth="540.3916015625">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@setup_picture.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="237.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please choose one of these RDBMS :" wrappingWidth="297.3916015625" />
+                        <RadioButton fx:id="radioButtonOracle" layoutX="249.0" layoutY="127.0" mnemonicParsing="false" text=" Oracle">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="radioButtonToggleGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radioButtonPostgreSQL" layoutX="249.0" layoutY="164.0" mnemonicParsing="false" text=" PostgreSQL" toggleGroup="$radioButtonToggleGroup" />
+                        <RadioButton fx:id="radioButtonMySQL" layoutX="249.0" layoutY="199.0" mnemonicParsing="false" text=" MySQL" toggleGroup="$radioButtonToggleGroup" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="fourthStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">
+                     <children>
+                        <Text fill="NAVY" layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Task Manager Server Installer" textAlignment="CENTER" wrappingWidth="540.3916015625">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@setup_picture.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="237.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please create user 'TIMETASKMANAGER' in your RDBMS with grants which allow create tables. triggers, sequences. For example, the script is below." wrappingWidth="297.3916015625" />
+                        <TextArea fx:id="textAreaCreateUserScript" layoutX="237.0" layoutY="142.0" prefHeight="100.0" prefWidth="322.0" text="CREATE USER TIMETASKMANAGER IDENTIFIED BY 12345;&#10;GRANT CREATE TABLE TO TIMETASKMANAGER;&#10;GRANT CREATE TRIGGER TO TIMETASKMANAGER;&#10;GRANT CREATE SEQUENCE TO TIMETASKMANAGER;&#10;GRANT CREATE SESSION TO TIMETASKMANAGER;" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextArea>
+                        <CheckBox fx:id="allowAutoCreatingUserCheckBox" layoutX="238.0" layoutY="256.0" mnemonicParsing="false" text="Allow creating automatically" />
+                        <Label layoutX="267.0" layoutY="277.0" text="* administrator rights are required" textFill="RED">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="fifthStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">
+                     <children>
+                        <Text fill="NAVY" layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Task Manager Server Installer" textAlignment="CENTER" wrappingWidth="540.3916015625">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@setup_picture.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="237.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Now please enter next information :" wrappingWidth="297.3916015625" />
+                        <TextField fx:id="textInputConnectionIP" layoutX="237.0" layoutY="122.0" prefHeight="31.0" prefWidth="218.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="237.0" layoutY="94.0" text="Connection IP-address for RDBMS :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textInputPort" layoutX="469.0" layoutY="121.0" prefHeight="31.0" prefWidth="65.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="476.0" layoutY="93.0" text="Port :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textInputUsername" layoutX="237.0" layoutY="193.0" prefHeight="31.0" prefWidth="284.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label fx:id="labelInputUsername" layoutX="237.0" layoutY="165.0" text="Database username :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="237.0" layoutY="228.0" text="Password :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="textInputPassword" layoutX="237.0" layoutY="257.0" prefHeight="31.0" prefWidth="284.0" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="sixthStepPane" layoutX="12.0" layoutY="9.0" prefHeight="324.0" prefWidth="574.0" visible="false">
+                     <children>
+                        <Text fill="NAVY" layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Task Manager Server Installer" textAlignment="CENTER" wrappingWidth="540.3916015625">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Now database structure will be created. You can fix this script before starting." wrappingWidth="257.99999982118607">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Text>
+                        <TextArea fx:id="textAreaCreateDBTablesScript" layoutX="14.0" layoutY="176.0" prefHeight="142.0" prefWidth="548.0" text="--&#10;-- Структура таблицы `tasks`&#10;--&#10;&#10;CREATE TABLE `tasks` (&#10;  `id` int(11) NOT NULL,&#10;  `userid` int(11) NOT NULL,&#10;  `taskname` varchar(255) NOT NULL,&#10;  `parenttaskid` int(11) DEFAULT NULL,&#10;  `creationtime` varchar(255) NOT NULL,&#10;  `finishtime` varchar(255) DEFAULT NULL,&#10;  `suggestedtaskduration` varchar(255) NOT NULL,&#10;  `elapsedtaskduration` varchar(255) NOT NULL,&#10;  `finished` varchar(5) NOT NULL,&#10;  `comments` varchar(255) DEFAULT NULL&#10;) ENGINE=InnoDB DEFAULT CHARSET=latin1;" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextArea>
+                        <Label layoutX="288.0" layoutY="64.0" text="Connection IP :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelConnectionIP" layoutX="389.0" layoutY="64.0" text="178.62.247.230" textFill="DARKRED">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="493.0" layoutY="64.0" text="Port :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelPort" layoutX="531.0" layoutY="64.0" text="5432" textFill="DARKRED">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="288.0" layoutY="42.0" text="RDBMS :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelRDBMS" layoutX="349.0" layoutY="42.0" text="PostgreSQL" textFill="DARKRED">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="288.0" layoutY="84.0" text="DB username :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDBUsername" layoutX="382.0" layoutY="84.0" text="TIMETASKMANAGER" textFill="DARKRED">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="textAreaCreateDBScript" layoutX="14.0" layoutY="111.0" prefHeight="40.0" prefWidth="548.0" text="CREATE DATABASE IF NOT EXISTS `timetaskmanager` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;&#10;USE `timetaskmanager`;&#10;" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextArea>
+                        <Label layoutX="26.0" layoutY="91.0" text="Script for database creation">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="156.0" text="Script for tables, triggers, indexes creation">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="seventhStepPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0" visible="false">
+                     <children>
+                        <Text fill="NAVY" layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Task Manager Server Installer" textAlignment="CENTER" wrappingWidth="540.3916015625">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="293.0" fitWidth="200.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@setup_picture.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="237.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulation ! Time Task Manager server application has just been successfully installed." wrappingWidth="297.3916015625" />
+                        <CheckBox fx:id="launchCheckBox" layoutX="237.0" layoutY="154.0" mnemonicParsing="false" selected="true" text="Launch Time Task Manager Server" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="installationProgressPane" layoutX="12.0" layoutY="9.0" prefHeight="316.0" prefWidth="574.0">
+                     <children>
+                        <ProgressBar fx:id="installationProgressBar" layoutX="27.0" layoutY="145.0" prefHeight="40.0" prefWidth="519.0" progress="0.0" />
+                        <Label fx:id="labelProgressIndicator" layoutX="45.0" layoutY="117.0" prefHeight="21.0" prefWidth="284.0" text="Progress indicator ...">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Text fill="NAVY" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Task Manager Server Installer" textAlignment="CENTER" wrappingWidth="540.3916015625">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+               <opaqueInsets>
+                  <Insets top="5.0" />
+               </opaqueInsets>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Button fx:id="backButton" layoutX="236.0" layoutY="12.0" mnemonicParsing="false" onAction="#handlePressBackButton" prefHeight="30.0" prefWidth="100.0" text="&lt; Back" />
+                  <Button fx:id="nextButton" layoutX="348.0" layoutY="12.0" mnemonicParsing="false" onAction="#handlePressNextButton" prefHeight="30.0" prefWidth="100.0" text="Next &gt;" />
+                  <Button fx:id="cancelButton" cancelButton="true" layoutX="459.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleCancelBackButton" prefHeight="30.0" prefWidth="100.0" text="Cancel" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

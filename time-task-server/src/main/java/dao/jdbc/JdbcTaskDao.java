@@ -20,7 +20,7 @@ public class JdbcTaskDao implements TaskDao {
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static final String UPDATE_TASK_BY_ID_SQL = "UPDATE tasks SET " +
-            "elapsedTaskDuration=?, finishTime=?, finished=?, comments=? " +
+            "taskName=?, suggestedTaskDuration=?, elapsedTaskDuration=?, finishTime=?, finished=?, comments=? " +
             "WHERE id=?";
 
     private static final String DELETE_TASK_BY_ID_SQL = "DELETE FROM tasks WHERE id=?";
@@ -130,6 +130,7 @@ public class JdbcTaskDao implements TaskDao {
      */
     private void processTask(Task task) throws SQLException, DaoException {
         if (!task.isChanged()) {
+            processTaskList(task.getSubTaskList());
             return;
         }
 
@@ -182,17 +183,19 @@ public class JdbcTaskDao implements TaskDao {
     }
 
     private void updateTask(Task task) throws SQLException, DaoException {
-        updateTaskPreparedStatement.setString(1, task.getElapsedTaskDuration().toString());
+        updateTaskPreparedStatement.setString(1, task.getTaskName());
+        updateTaskPreparedStatement.setString(2, task.getSuggestedTaskDuration().toString());
+        updateTaskPreparedStatement.setString(3, task.getElapsedTaskDuration().toString());
 
         String finishTimeString = null;
         if (task.getFinishTime() != null) {
             finishTimeString = task.getFinishTime().toString();
         }
-        updateTaskPreparedStatement.setString(2, finishTimeString);
+        updateTaskPreparedStatement.setString(4, finishTimeString);
 
-        updateTaskPreparedStatement.setBoolean(3, task.isFinished());
-        updateTaskPreparedStatement.setString(4, task.getComments());
-        updateTaskPreparedStatement.setLong(5, task.getId());
+        updateTaskPreparedStatement.setBoolean(5, task.isFinished());
+        updateTaskPreparedStatement.setString(6, task.getComments());
+        updateTaskPreparedStatement.setLong(7, task.getId());
 
         if (updateTaskPreparedStatement.executeUpdate() != 1) {
             throw new DaoException("Can't update task. Update failed");

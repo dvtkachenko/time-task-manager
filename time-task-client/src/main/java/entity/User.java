@@ -13,7 +13,7 @@ public class User implements Serializable {
     private String password;
 
     /** Contains user's root tasks */
-    private List<Task> taskList = new ArrayList<>();;
+    private List<Task> taskList = new ArrayList<>();
 
     /** Version changes on every successful update to database */
     private long taskListVersion;

@@ -15,8 +15,5 @@ public class UpdateUser {
         Synchronization synchronization = new Synchronization();
         synchronization.run();
 
-//        User user = new User("Andrey", "1234");
-//        ClientSocket socket = new ClientSocket();
-//        socket.sendMessage(user);
     }
 }

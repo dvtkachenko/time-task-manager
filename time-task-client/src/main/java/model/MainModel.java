@@ -4,18 +4,19 @@ import entity.Task;
 import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainModel {
     private static TreeView treeView;
-    private static List<Task> taskList = new ArrayList<>();
     private BorderPane pane;
     private HBox header;
     private ToggleButton playButton;
@@ -23,6 +24,7 @@ public class MainModel {
     private Button editButton;
     private Button removeButton;
     private Button completeButton;
+    private Button statisticsButton;
     private Label timer;
     private Label suggestedTime;
     private StringProperty timerText = new SimpleStringProperty();
@@ -65,7 +67,8 @@ public class MainModel {
         editButton = new Button("Edit");
         removeButton = new Button("Remove");
         completeButton = new Button("Complete");
-        sideBar.getChildren().addAll(addButton, editButton, removeButton, completeButton);
+        statisticsButton = new Button("Stats");
+        sideBar.getChildren().addAll(addButton, editButton, removeButton, completeButton, statisticsButton);
 
         VBox leftBar = new VBox();
         leftBar.setId("leftbar");
@@ -86,14 +89,6 @@ public class MainModel {
 
     public static void setTreeView(TreeView treeView) {
         MainModel.treeView = treeView;
-    }
-
-    public static List<Task> getTaskList() {
-        return taskList;
-    }
-
-    public static void setTaskList(List<Task> taskList) {
-        MainModel.taskList = taskList;
     }
 
     public BorderPane getPane() {
@@ -152,6 +147,14 @@ public class MainModel {
         this.completeButton = completeButton;
     }
 
+    public Button getStatisticsButton() {
+        return statisticsButton;
+    }
+
+    public void setStatisticsButton(Button statisticsButton) {
+        this.statisticsButton = statisticsButton;
+    }
+
     public Label getTimer() {
         return timer;
     }
@@ -176,13 +179,19 @@ public class MainModel {
         this.suggestedTime = suggestedTime;
     }
 
+    public Node createIcon() {
+        return new ImageView(new Image(getClass().getResourceAsStream("/icons/CheckMarkCircle.png")));
+    }
+
     public static void parseTreeView(List<TreeItem<Task>> root, List<Task> parent) {
         for (TreeItem<Task> item: root) {
             Task task = item.getValue();
             if (!item.getChildren().isEmpty()) {
                 parseTreeView(item.getChildren(), task.getSubTaskList());
             }
-            parent.add(task);
+            if (!parent.contains(task)) {
+                parent.add(task);
+            }
         }
     }
 
@@ -191,6 +200,9 @@ public class MainModel {
     public void loadTreeView(List<Task> tasks, TreeItem<Task> parent) {
         for (Task task: tasks) {
             TreeItem<Task> item = new TreeItem<>(task);
+            if (task.isFinished()) {
+                item.setGraphic(createIcon());
+            }
             parent.getChildren().add(item);
             if (task.getSubTaskList().size() != 0) {
                 loadTreeView(task.getSubTaskList(), item);

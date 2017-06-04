@@ -5,13 +5,13 @@ import network.SocketListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-
+/**
+ * Application starter. Initialize ApplicationContext and start SocketListener.
+ */
 public class Launcher {
-
     private static final Logger infoLogger = LogManager.getLogger("infoLogger");
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         infoLogger.info("Application started");
 

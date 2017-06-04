@@ -41,7 +41,6 @@ CREATE TABLE `tasks` (
 
 --
 -- Дамп данных таблицы `tasks`
--- This is the data for the correct operation of the program
 --
 
 INSERT INTO `tasks` (`id`, `userid`, `taskname`, `parenttaskid`, `creationtime`, `finishtime`, `suggestedtaskduration`, `elapsedtaskduration`, `finished`,'comments') VALUES
@@ -62,7 +61,6 @@ CREATE TABLE `users` (
 
 --
 -- Дамп данных таблицы `users`
--- This is the data for the correct operation of the program
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `tasklistversion`) VALUES

@@ -12,6 +12,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Locale;
 
+/**
+ * Contains pool of connections to specified database and provide connection on demand.
+ */
 public class ConnectionManager {
     private static ComboPooledDataSource dataSource;
 

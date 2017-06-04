@@ -3,6 +3,7 @@ package user;
 import entity.Task;
 import entity.User;
 import message.Message;
+import message.MessageType;
 import model.UserSerializable;
 import network.ClientSocket;
 import org.junit.Before;
@@ -52,7 +53,7 @@ public class Test_UserSerializable {
         user.setTaskList(list);
         user.setTaskListVersion(5L);
         ClientSocket socket = new ClientSocket();
-        Message responseMessage = socket.sendMessage(user);
+        Message responseMessage = socket.sendMessage(user, MessageType.UPDATE_MESSAGE);
         Message messageExpected;
     }
 }

@@ -111,7 +111,15 @@ public class JdbcUserDao implements UserDao {
             }
 
             user.setTaskList(updatedTaskList);
+
             infoLogger.info("user "+ user.getLogin() + " updated in database");
+
+            // Следующие две строчки добавлены для упрощения вычислений на клиентской части
+            // посредством отправления полной информации по пользователю
+            // и могут быть удалены как только в клиент будут внесены необходимые изменения
+            List<Task> taskList = taskDao.getTaskListByUserId(user.getId());
+            user.setTaskList(taskList);
+
             return user;
         } catch (SQLException e) {
             throw new DaoException("Connection with database failed", e);

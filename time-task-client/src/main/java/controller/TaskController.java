@@ -2,7 +2,6 @@ package controller;
 
 import entity.Task;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javafx.scene.control.TreeItem;
@@ -37,14 +36,13 @@ public class TaskController {
 
     public void editTaskItem() {
         taskModel.getEditButton().setOnAction(e -> {
-            String taskName = taskModel.getTaskName().getText();
-            Duration taskDuration = Duration.ofSeconds(taskModel.getTaskDuration());
-            String taskComment = taskModel.getTaskComment().getText();
-            Task task = new Task(taskName, taskDuration, taskComment);
-            task.setChanged(true);
-
             TreeItem<Task> treeItem = (TreeItem<Task>) MainModel.getTreeView().getSelectionModel().getSelectedItem();
-            treeItem.setValue(task);
+            Task task = treeItem.getValue();
+            task.setTaskName(taskModel.getTaskName().getText());
+            task.setSuggestedTaskDuration(Duration.ofSeconds(taskModel.getTaskDuration()));
+            task.setComments(taskModel.getTaskComment().getText());
+            task.setChanged(true);
+            MainModel.getTreeView().refresh();
             taskModel.getEditButton().getScene().getWindow().hide();
 
             MainController.updateUser();

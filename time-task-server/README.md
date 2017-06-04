@@ -1,1 +1,1 @@
-This is the socketListener side of Time Task Manager project
+This is the server side of Time Task Manager project

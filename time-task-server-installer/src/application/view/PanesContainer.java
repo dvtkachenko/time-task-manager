@@ -3,6 +3,7 @@ package application.view;
 import javafx.scene.layout.Pane;
 
 import static application.view.ViewController.TOTAL_PANE;
+import static application.view.ViewController.INSTALLATION_PROGRESS_PANE_INDEX;
 
 /**
  * Created by diman on 12.05.2017.
@@ -25,6 +26,7 @@ public class PanesContainer {
         arrayOfPanes[4] = controller.getFifthStepPane();
         arrayOfPanes[5] = controller.getSixthStepPane();
         arrayOfPanes[6] = controller.getSeventhStepPane();
+        arrayOfPanes[7] = controller.getInstallationProgressPane();
 
         indexActivePane = 0;
         showPane(indexActivePane);
@@ -36,14 +38,14 @@ public class PanesContainer {
 
     private void showPane(int numPane) {
         if (numPane >= TOTAL_PANE || numPane < 0) return;
-        arrayOfPanes[numPane].setVisible(true);
         arrayOfPanes[numPane].setDisable(false);
+        arrayOfPanes[numPane].setVisible(true);
     }
 
     private void hidePane(int numPane) {
         if (numPane >= TOTAL_PANE || numPane < 0) return;
-        arrayOfPanes[numPane].setVisible(false);
         arrayOfPanes[numPane].setDisable(true);
+        arrayOfPanes[numPane].setVisible(false);
     }
 
     public void setActivePane(int newIndexActivePane) {
@@ -54,6 +56,19 @@ public class PanesContainer {
 
     public int getIndexActivePane() {
         return indexActivePane;
+    }
+    
+    public void showInstallationProgressBar() {
+//        for (int i=indexActivePane; i < INSTALLATION_PROGRESS_PANE_INDEX; i++) {
+//            hidePane(i);
+//        }
+        hidePane(indexActivePane);
+        showPane(INSTALLATION_PROGRESS_PANE_INDEX);
+    }
+
+    public void hideInstallationProgressBar() {
+        hidePane(INSTALLATION_PROGRESS_PANE_INDEX);
+        showPane(indexActivePane);
     }
 
 //    public Pane[] getPanes() {

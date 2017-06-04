@@ -4,6 +4,7 @@ import application.controller.MainController;
 import application.model.DBConnectionInfo;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.StageStyle;
@@ -19,17 +20,10 @@ import java.util.Optional;
  *
  */
 
-
 public class ViewController {
 
-    public final static int TOTAL_PANE = 7;
-
-    // we have to know when text fields were changed by user
-    // and we need to update our information in InstallationInfo
-    private boolean userScriptChanged = false;
-    private boolean databaseScriptChanged = false;
-    private boolean tablesScriptChanged = false;
-    private boolean installationPathChanged = false;
+    public final static int TOTAL_PANE = 8;
+    public final static int INSTALLATION_PROGRESS_PANE_INDEX = 7;
 
     @FXML
     private Button backButton;
@@ -60,6 +54,9 @@ public class ViewController {
 
     @FXML
     private Pane seventhStepPane;
+
+    @FXML
+    private Pane installationProgressPane;
 
     @FXML
     private TextField textInputInstallationPath;
@@ -118,15 +115,26 @@ public class ViewController {
 
     @FXML
     private CheckBox launchCheckBox;
-
+    
+    @FXML
+    private Label labelProgressIndicator;
+    
+//    @FXML
+    private ProgressBar installationProgressBar;
+    
     private MainController mainController;
-//    private ModelViewDataUpdater modelUpdater;
+    
+    private AnchorPane mainPane; 
 
-    public PanesContainer panesContainer;
+    private PanesContainer panesContainer;
 
     public ViewController() {
     }
 
+    public void setMainPane(AnchorPane mainPane) {
+    	this.mainPane = mainPane;
+    }
+    
     public Pane getFirstStepPane() {
         return firstStepPane;
     }
@@ -155,6 +163,9 @@ public class ViewController {
         return seventhStepPane;
     }
 
+    public Pane getInstallationProgressPane() {
+        return installationProgressPane;
+    }
 
     public TextField getTextInputInstallationPath() {
         return textInputInstallationPath;
@@ -207,6 +218,10 @@ public class ViewController {
     public CheckBox getLaunchCheckBox() {
         return launchCheckBox;
     }
+    
+    public Label getLabelProgressIndicator() {
+        return labelProgressIndicator;
+    }
 
     public CheckBox getAllowAutoCreatingUserCheckBox() {
         return allowAutoCreatingUserCheckBox;
@@ -224,21 +239,6 @@ public class ViewController {
             case Oracle: radioButtonOracle.setSelected(true); break;
         }
     }
-
-//    // needs changes
-//    public void setRadioButtonOracle(RadioButton radioButtonOracle) {
-//        this.radioButtonOracle = radioButtonOracle;
-//    }
-//
-//    // needs changes
-//    public void setRadioButtonPostgreSQL(RadioButton radioButtonPostgreSQL) {
-//        this.radioButtonPostgreSQL = radioButtonPostgreSQL;
-//    }
-//
-//    // needs changes
-//    public void setRadioButtonMySQL(RadioButton radioButtonMySQL) {
-//        this.radioButtonMySQL = radioButtonMySQL;
-//    }
 
     public void setAllowAutoCreatingUserCheckBox(boolean allowAutoCreatingUser) {
         allowAutoCreatingUserCheckBox.setSelected(allowAutoCreatingUser);
@@ -296,6 +296,69 @@ public class ViewController {
         launchCheckBox.setSelected(launch);
     }
 
+    public void setActivePage(int activePage) {
+        panesContainer.setActivePane(activePage);
+    }
+
+    public int getActivePage() {
+        return panesContainer.getIndexActivePane();
+    }
+
+    public void setNextButtonText(String text) {
+        nextButton.setText(text);
+    }
+
+    public void setCancelButtonMode(boolean buttonMode) {
+        cancelButton.setDisable(!buttonMode);
+        cancelButton.setVisible(buttonMode);
+    }
+
+    public void setBackButtonMode(boolean buttonMode) {
+        backButton.setDisable(!buttonMode);
+        backButton.setVisible(buttonMode);
+    }
+
+    public void setBackButtonDisable(boolean buttonMode) {
+        backButton.setDisable(buttonMode);
+    }
+
+    public void setLabelProgressIndicator(String text) {
+    	labelProgressIndicator.setText(text);
+    }
+    
+    public void showInstallationProgressPage(String progressMessage) {
+        setLabelProgressIndicator(progressMessage);
+        
+        panesContainer.showInstallationProgressBar();
+        if (installationProgressBar == null) {
+            installationProgressBar = new ProgressBar(ProgressBar.INDETERMINATE_PROGRESS);
+            installationProgressBar.setPrefWidth(519.0d);
+            installationProgressBar.setPrefHeight(40.0d);
+            installationProgressBar.setLayoutX(27.0d + 18.0d);
+            installationProgressBar.setLayoutY(145.0d + 15.0d);
+            mainPane.getChildren().add(installationProgressBar);
+        } 
+        installationProgressBar.setVisible(true);
+        
+      backButton.setVisible(false);
+      nextButton.setVisible(false);
+      cancelButton.setVisible(false);
+
+        //        <ProgressBar fx:id="installationProgressBar" layoutX="27.0" layoutY="145.0" prefHeight="40.0" prefWidth="519.0" />
+
+//    	installationProgressBar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
+//        installationProgressBar.setDisable(false);
+//        installationProgressBar.setVisible(true);
+    }
+    
+    public void hideInstallationProgressPage() {
+        installationProgressBar.setVisible(false);
+        backButton.setVisible(true);
+        nextButton.setVisible(true);
+        cancelButton.setVisible(true);
+    	panesContainer.hideInstallationProgressBar();
+    }
+
     @FXML
     private void initialize() {
         panesContainer = new PanesContainer();
@@ -309,85 +372,18 @@ public class ViewController {
         this.mainController = mainController;
     }
 
-//    public void setModelUpdater(ModelViewDataUpdater modelUpdater) {
-//        this.modelUpdater = modelUpdater;
-//    }
-
     @FXML
     private void handlePressNextButton() {
 
-        int activePane = panesContainer.getIndexActivePane();
+        mainController.doNextStep();
 
-        // update model data information
-//        modelUpdater.updateModelView(activePane);
-
-        // if data in pane's controls are incorrect we return to edit
-        if (!mainController.checkInputData(activePane)) {
-            showWarningDialog("You have to enter correct installation information");
-            return;
-        }
-        mainController.doNextStep(activePane);
-//        invoke model updater
-//        modelUpdater.....
-
-        // show hide controls and panes
-        switch (activePane) {
-
-            case 0 : backButton.setDisable(false);
-                     backButton.setVisible(true);
-                     panesContainer.setActivePane(activePane + 1);
-                     break;
-
-            case 1 :
-            case 2 :
-            case 3 :
-            case 4 :
-                     panesContainer.setActivePane(activePane + 1);
-                     break;
-
-            case 5 : nextButton.setText("Finish");
-                     cancelButton.setVisible(false);
-                     cancelButton.setDisable(true);
-                     panesContainer.setActivePane(activePane + 1);
-                     break;
-
-            case 6 : break;
-
-        }
     }
 
     @FXML
     private void handlePressBackButton() {
 
-        int activePane = panesContainer.getIndexActivePane();
+        mainController.doBackStep();
 
-        // here is a do method
-        mainController.doBackStep(activePane);
-
-        // show hide controls and panes
-        switch (activePane) {
-
-            case 0 : break;
-
-            case 1 : backButton.setDisable(true);
-                     backButton.setVisible(false);
-                     panesContainer.setActivePane(activePane - 1);
-                     break;
-
-            case 2 :
-            case 3 :
-            case 4 :
-            case 5 :
-                     panesContainer.setActivePane(activePane - 1);
-                     break;
-
-            case 6 : nextButton.setText("Next >");
-                     cancelButton.setVisible(true);
-                     cancelButton.setDisable(false);
-                     panesContainer.setActivePane(activePane - 1);
-                     break;
-
-        }
     }
 
     @FXML
@@ -398,26 +394,6 @@ public class ViewController {
     }
 
     @FXML
-    private void textAreaCreateUserScriptTextChanged() {
-        if (!userScriptChanged) userScriptChanged = true;
-    }
-
-    @FXML
-    private void textAreaCreateDBScriptTextChanged() {
-        if (!databaseScriptChanged) databaseScriptChanged = true;
-    }
-
-    @FXML
-    private void textAreaCreateDBTablesScriptTextChanged() {
-        if (!tablesScriptChanged) tablesScriptChanged = true;
-    }
-
-    @FXML
-    private void textInputInstallationPathChanged() {
-        if (!installationPathChanged) installationPathChanged = true;
-    }
-
-    @FXML
     private void handleOpenFileDialogButton() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
 
@@ -425,7 +401,6 @@ public class ViewController {
 
         if (directory != null) {
             textInputInstallationPath.setText(directory.getPath());
-            installationPathChanged = true;
         }
 //        modelUpdater.updateIIInstallationPath(textInputInstallationPath.getText());
     }

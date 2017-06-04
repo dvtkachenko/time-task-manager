@@ -38,6 +38,7 @@ public class ServerInstaller extends Application {
             AnchorPane pane = loader.load();
 
             ViewController viewController = loader.getController();
+            viewController.setMainPane(pane);
             mainController = new MainController(primaryStage, viewController);
             Scene scene = new Scene(pane);
             primaryStage.setScene(scene);

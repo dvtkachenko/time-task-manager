@@ -16,12 +16,12 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Class which contains application properties
+ * Class which contains application properties,
  * like currently using interface implementations
  * and database connection parameters
  */
 public class ApplicationContext {
-    private static String propertyFilePath = "persistence.properties";
+    private static String propertyFilePath = "postgrePersistence.properties";
     static Properties prop;
 
     private static final Logger infoLogger = LogManager.getLogger("infoLogger");
